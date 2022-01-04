@@ -58,10 +58,6 @@ function onSignIn(googleUser) {
 }
 
 
-
-
-
-
 // To Back end developer 
 /*/
     * The data you will be sending : 

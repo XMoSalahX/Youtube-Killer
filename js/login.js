@@ -7,11 +7,16 @@ var fbLogin = document.querySelector(".fa-facebook-f")
 var allert = document.querySelector(".allert")
 
 
+// get data From local Storage 
+getDataFromLocalStorage()
 
 
 
 // data Will be push to database
 var dataL = {}
+
+// array to store User Data To Local Storage
+let arrayUserData = []
 
 
 // get data form user from Our Site
@@ -24,11 +29,46 @@ submit.addEventListener("click", function(event) {
         // display allert
         allert.style.display = "block";
     }
+    if (email.value != "" && checkBox.checked && password != "") {
+        // Call function to store New Data To Local Storage
+        addUserDataToArray(dataL.email, dataL.password)
+        addDataToLocalStorage(arrayUserData)
+        console.log(arrayUserData)
+        console.log(JSON.stringify(arrayUserData))
+    }
 });
+
+// function to store New Data To Local Storage
+function addUserDataToArray(email, password) {
+    // User Data 
+    const UserData = {
+        email: email,
+        password: password
+    }
+    arrayUserData.push(UserData)
+}
 
 allert.addEventListener("click", function() {
     allert.style.display = "none";
 })
+
+// to add Data to local Storage
+function addDataToLocalStorage(arrayUserData) {
+    window.localStorage.setItem("User Data", JSON.stringify(arrayUserData))
+}
+
+// Function To get Data From Local Storage
+function getDataFromLocalStorage() {
+    let data = window.localStorage.getItem("User Data")
+    if (data) {
+        let UserDataFromLocal = JSON.parse(data)
+        console.log(UserDataFromLocal)
+        email.value = UserDataFromLocal[0].email
+        password.value = UserDataFromLocal[0].password
+    }
+}
+
+
 
 
 
@@ -53,6 +93,10 @@ function onSignIn(googleUser) {
     dataL.password = id_token.substring(0, 25)
     console.log(dataL)
 }
+
+
+
+
 
 
 // To Back end developer 
