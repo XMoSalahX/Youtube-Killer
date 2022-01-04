@@ -1,0 +1,23 @@
+//- Extends to take the basic HTML for This page
+extends basic-log-page.pug
+//- to modifiy script
+block script    
+    script(src="js/register.js")
+//- Main Log to Add Main Content
+block mainLog
+    h2 Create an account
+    .allert 
+        b Congrats
+        |, your account has been created!
+    form(action="#") 
+        input(type="text" placeholder="Full Name" name="FullName" required)
+        div(class="alert-Box name")  Please enter your name
+        input(type="email" placeholder="Email Address" name="EmailAdress" required)
+        div(class="alert-Box email") Please enter your Email Address
+        input(type="password" placeholder="Password" Name="Password" required)
+        div(class="alert-Box password") Please enter your Password
+        input(type="checkbox" required)
+        span.agree I agree to the terms of service 
+        input(type="submit" value="Register" id="submit") 
+        
+

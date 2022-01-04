@@ -1,0 +1,17 @@
+//- Extends to take the basic HTML for This page
+extends basic-log-page.pug
+//- Main Log to Add Main Content
+block mainLog
+    h2 Recover Your Password
+    .allert 
+        b Congrats
+        |, and email has been sent to your email.
+    form(action="#") 
+        input(type="email" placeholder="Email Address" name="EmailAdress" required)
+        div(class="alert-Box email") Please enter your Email Address
+        input(type="submit" value="Send" id="submit") 
+
+
+//- to modifiy script
+block script    
+    script(src="js/forget.js")

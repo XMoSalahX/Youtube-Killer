@@ -1,0 +1,61 @@
+// doctype for HTML5 
+|
+|
+doctype 
+// Start HTML 
+html(lang="en")
+    // Start head 
+    head
+        // Add appropriate markup for users 
+        meta(charset="UTF-8")/
+        // displays site properly based on user's device
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")/
+        // add description to SEO 
+        meta(name="description" content="You can enjoy the videos and music you love, upload original content, and share it all with your friends, family and the world on YouTube Killer.")/
+        // This is Website Icon
+        link(rel="icon" href="images/icons8-k-96.png" type="image/png" sizes="96x96")
+        title Youtube Killer
+        // Normalize library 
+        link(rel="stylesheet", href="css/normalize.css")
+        // font awesome for icon
+        link(rel="stylesheet", href="css/all.min.css")
+        // google API
+        <meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="536992085046-725lusp25dpddn4fk9mv3egmfc5pc1m2.apps.googleusercontent.com">
+        //- Add block to modify page Stylesheet
+        block Main-Stylesheet   
+            //main stylesheet
+            link(rel="stylesheet", href="css/main-log.css")
+            //media stylesheet for mobile
+            link(rel="stylesheet", href="css/media-log.css")
+    // End Head 
+    // Start Body 
+    body 
+        .container
+            .center  
+                .form-inner
+                    a(href="#")
+                        h1 
+                            |
+                            span Y 
+                            |Killer
+                    //- This is block for modify the Main Content in any log page
+                    block mainLog
+                    .clearfix Or Login With
+                    .socialBox  
+                        .box
+                            i(class="fab fa-facebook-f")
+                        .box(class="g-signin2" data-onsuccess="onSignIn" data-theme="dark")
+                            //- (class="g-signin2" data-onsuccess="onSignIn" data-theme="dark")
+                    block member
+                        .member  Already a member?
+                            a(href="#")  Login here
+            .imgControl
+                img(src="images/img-3.png", alt="Image for log page design")
+        // google api script
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        //- To modify Script file
+        block script    
+    // End Body 
+// End HTML 
+    
