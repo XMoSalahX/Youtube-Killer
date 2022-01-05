@@ -23,6 +23,26 @@ submit.addEventListener("click", function(event) {
     if (checkBox.checked && fullName.value != "" && email.value != "" && password != "") {
         // display allert
         allert.style.display = "block";
+        console.log(data)
+            // POST request using fetch()
+        fetch("#", {
+
+            // Adding method type
+            method: "POST",
+
+            // Adding body or contents to send
+            body: JSON.stringify(data),
+
+            // Adding headers to the request
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        });
+        // send user to login page
+        setTimeout(() => {
+            window.location = "../../Youtube-Killer/login-page.html"
+        }, 2000);
+
     }
 });
 
@@ -55,7 +75,31 @@ function onSignIn(googleUser) {
     data.email = profile.getEmail()
     data.password = id_token.substring(0, 25)
     console.log(data)
+
+    // POST request using fetch()
+    fetch("#", {
+
+            // Adding method type
+            method: "POST",
+
+            // Adding body or contents to send
+            body: JSON.stringify(data),
+
+            // Adding headers to the request
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        // send user to login page
+    setTimeout(() => {
+        window.location = "../../Youtube-Killer/login-page.html"
+    }, 2000);
+
 }
+
+
+
+
 
 
 // To Back end developer 

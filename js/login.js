@@ -7,6 +7,7 @@ var fbLogin = document.querySelector(".fa-facebook-f")
 var allert = document.querySelector(".allert")
 
 
+
 // get data From local Storage 
 getDataFromLocalStorage()
 
@@ -36,6 +37,27 @@ submit.addEventListener("click", function(event) {
         console.log(arrayUserData)
         console.log(JSON.stringify(arrayUserData))
     }
+
+    // POST request using fetch()
+    fetch("#", {
+
+        // Adding method type
+        method: "POST",
+
+        // Adding body or contents to send
+        body: JSON.stringify(dataL),
+
+        // Adding headers to the request
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+
+    // Converting to JSON
+    .then(response => response.json())
+
+    // Displaying results to console
+    .then(json => console.log(json));
 });
 
 // function to store New Data To Local Storage
@@ -63,8 +85,8 @@ function getDataFromLocalStorage() {
     if (data) {
         let UserDataFromLocal = JSON.parse(data)
         console.log(UserDataFromLocal)
-        email.value = UserDataFromLocal[0].email
-        password.value = UserDataFromLocal[0].password
+        email.value = UserDataFromLocal[UserDataFromLocal.length - 1].email
+        password.value = UserDataFromLocal[UserDataFromLocal.length - 1].password
     }
 }
 
@@ -92,6 +114,27 @@ function onSignIn(googleUser) {
     dataL.email = profile.getEmail()
     dataL.password = id_token.substring(0, 25)
     console.log(dataL)
+
+    // POST request using fetch()
+    fetch("#", {
+
+        // Adding method type
+        method: "POST",
+
+        // Adding body or contents to send
+        body: JSON.stringify(dataL),
+
+        // Adding headers to the request
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+
+    // Converting to JSON
+    .then(response => response.json())
+
+    // Displaying results to console
+    .then(json => console.log(json));
 }
 
 

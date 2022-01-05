@@ -1,0 +1,193 @@
+@import "color";
+* {
+    font-family: sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.ti-sl {
+    height: 100vh;
+}
+
+.sliderShow {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 600px;
+    img {
+        position: absolute;
+        transition: opacity 1s;
+        opacity: 0;
+        -webkit-transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -ms-transition: opacity 1s;
+        -o-transition: opacity 1s;
+        z-index: 1;
+        &.active {
+            opacity: 1;
+        }
+    }
+}
+
+.heading {
+    position: absolute;
+    z-index: 2;
+    top: 770px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;
+    h1 {
+        font-size: 40px;
+    }
+    b {
+        color: $green;
+    }
+    button {
+        margin-top: 50px;
+        width: 200px;
+        font-size: 20px;
+        padding-block: 20px;
+        color: $white;
+        background-color: $green;
+        border: none;
+        &:hover {
+            background-color: $black;
+        }
+    }
+}
+
+// Start nav
+nav {
+    box-shadow: 1px 20px 20px 0px #0000003b;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    background-color: $green;
+    align-items: center;
+    font-size: 20px;
+    color: $white;
+    padding-inline: 50px;
+    ul {
+        list-style: none;
+        display: flex;
+        height: 60px;
+        li {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding-inline: 20px;
+            height: 100%;
+            &:hover {
+                background-color: $white;
+                color: $black;
+            }
+        }
+    }
+    .control {
+        display: flex;
+        height: 100%;
+        div {
+            display: flex;
+            align-items: center;
+            padding-inline: 20px;
+            cursor: pointer;
+            height: 100%;
+            &:hover {
+                background-color: $white;
+                color: $black;
+            }
+        }
+        button {
+            padding-inline: 20px;
+            border: none;
+            background-color: $white;
+            color: $black;
+            cursor: pointer;
+            &:hover {
+                background-color: $darkGreen;
+                color: $white;
+            }
+        }
+    }
+}
+
+//End nav
+// Start main Content
+.content-Container {
+    padding-inline: 70px;
+    .header-content {
+        font-size: 50px;
+        font-weight: bold;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+    .Topic {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 100px;
+        row-gap: 50px;
+        .img {
+            overflow: hidden;
+            &:hover img {
+                transform: scale(1.2) rotate(5deg);
+                -webkit-transform: scale(1.2) rotate(5deg);
+                -moz-transform: scale(1.2) rotate(5deg);
+                -ms-transform: scale(1.2) rotate(5deg);
+                -o-transform: scale(1.2) rotate(5deg);
+            }
+            img {
+                transition: 1s;
+                -webkit-transition: 1s;
+                -moz-transition: 1s;
+                -ms-transition: 1s;
+                -o-transition: 1s;
+            }
+        }
+        .box {
+            flex-basis: 24%;
+            div {
+                img {
+                    max-width: 100%;
+                }
+            }
+            .boxContent {
+                margin-top: 10px;
+                h2 {
+                    color: $black;
+                    cursor: pointer;
+                    &:hover {
+                        color: $lightGray;
+                    }
+                }
+                p {
+                    color: $darkGray;
+                    font-size: 16px;
+                }
+                .veiws {
+                    text-align: right;
+                    margin-top: 10px;
+                    color: $green;
+                }
+            }
+        }
+    }
+}
+
+// End main content
+//start Footer 
+footer {
+    text-align: center;
+    background-color: $green;
+    padding-block: 10px;
+    color: $white;
+}
+
+// End Footer

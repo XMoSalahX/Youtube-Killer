@@ -11,13 +11,18 @@ var dataF = {}
 // get data form user from Our Site
 submit.addEventListener("click", function(event) {
     event.preventDefault()
-    data.email = email.value
+    dataF.email = email.value
 
-    console.log(data)
+    console.log(dataF)
     if (email.value != "") {
         // display allert
         allert.style.display = "block";
+        // send user to login page
+        setTimeout(() => {
+            window.location = "../../Youtube-Killer/login-page.html"
+        }, 2000);
     }
+
 });
 
 allert.addEventListener("click", function() {
@@ -44,6 +49,21 @@ function onSignIn(googleUser) {
     // add main data to our object
     dataF.email = profile.getEmail()
     console.log(dataF)
+
+    fetch("#", {
+
+        // Adding method type
+        method: "POST",
+
+        // Adding body or contents to send
+        body: JSON.stringify(dataF),
+
+        // Adding headers to the request
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+
 }
 
 
