@@ -6,8 +6,8 @@ setInterval(() => {
         element.classList.remove("active")
 
     });
-    if (x >= 7) {
-        x = 0
+    if (x >= 8) {
+        x = 1
     }
     sliderContainer[x].classList.add("active")
     x++
@@ -52,28 +52,42 @@ const blurE = document.querySelector(".blur")
 const pop = document.querySelector(".pop")
 setting.addEventListener("click", function() {
     blurE.classList.add("enable")
-    pop.classList.add("enable")
+    pop.classList.add("enablePop")
 })
 
 // Close Website Setting
 blurE.addEventListener("click", function() {
     blurE.classList.remove("enable")
-    pop.classList.remove("enable")
+    pop.classList.remove("enablePop")
+    navNone.classList.toggle("navToggle")
 })
 
 const buttonCancel = document.querySelectorAll("form button")
 buttonCancel[0].addEventListener("click", function(e) {
     e.preventDefault()
     blurE.classList.remove("enable")
-    pop.classList.remove("enable")
+    pop.classList.remove("enablePop")
 })
 buttonCancel[1].addEventListener("click", function(e) {
     e.preventDefault()
     blurE.classList.remove("enable")
-    pop.classList.remove("enable")
+    pop.classList.remove("enablePop")
 })
 buttonCancel[2].addEventListener("click", function(e) {
     e.preventDefault()
     blurE.classList.remove("enable")
-    pop.classList.remove("enable")
+    pop.classList.remove("enablePop")
+})
+
+// to display setting 
+const displaySetting = document.querySelector(".Icon")
+const navNone = document.querySelector(".navControl")
+displaySetting.addEventListener("click", function() {
+    navNone.classList.toggle("navToggle")
+    blurE.classList.add("enable")
+})
+
+navNone.addEventListener("click", function() {
+    navNone.classList.toggle("navToggle")
+    blurE.classList.remove("enable")
 })

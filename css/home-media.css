@@ -1,0 +1,127 @@
+@media (max-width:1420px) {
+    .content-Container .Topic .box {
+        flex-basis: 32.5%;
+        margin-bottom: 50px;
+    }
+    .content-Container .Topic {
+        justify-content: flex-start;
+        gap: 1.25%;
+        row-gap: 2%;
+    }
+    .pop {
+        flex-direction: column;
+        position: absolute;
+        top: 1500px;
+        height: auto;
+    }
+}
+
+@media (max-width:1100px) {
+    .content-Container .Topic .box {
+        flex-basis: 49%;
+    }
+    .content-Container .Topic {
+        justify-content: flex-start;
+        gap: 2%;
+    }
+    nav {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    .navControl {
+        position: absolute;
+        top: 65px;
+        background-color: #2ad4bc;
+        z-index: 10;
+        width: 95%;
+        padding-top: 20px;
+        left: 50%;
+        transform: translate(-50%);
+        -webkit-transform: translate(-50%);
+        -moz-transform: translate(-50%);
+        -ms-transform: translate(-50%);
+        -o-transform: translate(-50%);
+        display: none;
+    }
+    nav .navControl .navMob {
+        display: block;
+        height: 300px;
+        width: 90%;
+        padding: 0;
+    }
+    nav ul {
+        flex-direction: column;
+        height: unset;
+    }
+    nav ul li {
+        padding-block: 10px;
+        transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+    }
+    nav ul li:hover {
+        padding-inline: 50px;
+    }
+    nav .navControl .control {
+        flex-direction: column;
+    }
+    nav .navControl .control div {
+        padding-block: 10px;
+        transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+    }
+    nav .navControl .control div:hover {
+        padding-inline: 50px;
+    }
+    nav .navControl .control button {
+        padding-block: 10px;
+        align-self: end;
+        width: 90%;
+        margin-top: 20px;
+    }
+    nav .mobControl {
+        margin-inline: 30px;
+        display: block;
+        font-size: 30px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (max-width:780px) {
+    .content-Container .Topic .box {
+        flex-basis: 100%;
+    }
+    .content-Container .header-content {
+        margin-top: 0;
+        font-size: 25px;
+    }
+    .content-Container .Topic {
+        margin-bottom: 20px;
+    }
+    nav {
+        margin-bottom: 50px;
+    }
+    .content-Container .Topic .box .boxContent h2 {
+        font-size: 18px;
+    }
+    .content-Container .Topic .box .boxContent p {
+        font-size: 14px;
+    }
+    .content-Container .Topic .box .boxContent .veiws {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:500px) {
+    .content-Container {
+        padding-inline: 20px;
+    }
+}
