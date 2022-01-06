@@ -22,7 +22,7 @@ block slideShow
                 b Youtube 
                 | Killer
             p You can enjoy the videos and music you love, upload original content, and share it all with your friends, family and the world on YouTube Killer.
-            button Let's start
+            button.start Let's start
     nav
         ul 
             li Entertainment 
@@ -211,6 +211,32 @@ block slideShow
                     p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     .veiws Views: 5451
     footer Developed by Mohammed Salah &copy;
+    .blur 
+    .pop
+        form(action="#" class="passwordChange pop-f") 
+            .passHead Change Password
+            p You should be aware that by clicking on the button below, you agree to the change of password and you will not be able to access the account with the old password again.
+            input(type="password" name="new password" placeholder="Enter New Passowrd")
+            input(type="submit" value="SUBMIT") 
+            button Cancel
+        form(action="#" class="frezee pop-f")
+            .freezeHead Freeze account
+            p You should be aware that when you press the button below, you acknowledge that you agree to freeze newsletter activity on the account during the period that you specify.
+            select 
+                option 24 Hour
+                option 1 Week
+                option 1 Month
+                option 3 Month
+                option 6 Month
+                option 1 Year
+            input(type="submit" value="SUBMIT") 
+            button Cancel
+        form(action="#" class="remove pop-f")
+            .removeHead Remove your account
+            p You should be aware that by clicking on the button below, you agree to delete the account and you will not be able to log in again with your email and password.
+            input(type="text" placeholder="Please type the word \"Delete\" in this field.")
+            input(type="submit" value="SUBMIT") 
+            button Cancel
 
 //- Home Script
 block script

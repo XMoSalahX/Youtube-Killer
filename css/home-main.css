@@ -6,6 +6,116 @@
   padding: 0;
 }
 
+.blur {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.781);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+}
+
+.pop {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 520px;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+}
+
+.pop .pop-f {
+  padding-inline: 20px;
+  padding-block: 50px;
+  border-inline: #fff2f2 1px solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.pop .pop-f div {
+  font-size: 30px;
+  font-weight: bold;
+  color: #2ad4bc;
+  margin-bottom: 50px;
+}
+
+.pop .pop-f p {
+  margin-bottom: 25px;
+}
+
+.pop .pop-f input,
+.pop .pop-f select {
+  padding-inline: 20px;
+  padding-block: 20px;
+  margin-bottom: 25px;
+  outline: #2ad4bc 1px solid;
+  border: none;
+}
+
+.pop .pop-f input[type="submit"] {
+  outline: none;
+  color: white;
+  background-color: #2ad4bc;
+}
+
+.pop .pop-f input[type="submit"]:hover {
+  color: white;
+  background-color: #0e0d0d;
+}
+
+.pop .pop-f button {
+  padding-inline: 20px;
+  padding-block: 20px;
+  outline: none;
+  color: #0e0d0d;
+  background-color: #f8d7da;
+  border: none;
+}
+
+.pop .pop-f button:hover {
+  color: white;
+  background-color: #0e0d0d;
+}
+
+.enable {
+  z-index: 3;
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
 .ti-sl {
   height: 100vh;
 }
