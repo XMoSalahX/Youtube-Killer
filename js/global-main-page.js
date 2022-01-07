@@ -86,10 +86,10 @@ const displaySetting = document.querySelector(".Icon")
 const navNone = document.querySelector(".navControl")
 displaySetting.addEventListener("click", function() {
     navNone.classList.toggle("navToggle")
-    blurE.classList.add("enable")
+    blurE.classList.add("enablePop")
 })
 
 navNone.addEventListener("click", function() {
     navNone.classList.toggle("navToggle")
-    blurE.classList.remove("enable")
+    blurE.classList.remove("enablePop")
 })

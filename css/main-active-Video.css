@@ -1,0 +1,280 @@
+.main-vedio-container {
+  display: -ms-grid;
+  display: grid;
+  padding: 50px;
+  padding-top: 50px;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+  -ms-grid-rows: (auto)[10];
+      grid-template-rows: repeat(10, auto);
+  -webkit-column-gap: 100px;
+          column-gap: 100px;
+}
+
+.main-vedio-container .vedioHolder .ifram {
+  margin-bottom: 20px;
+}
+
+.main-vedio-container .vedioHolder .controler {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.main-vedio-container .vedioHolder .controler h2 {
+  width: 70%;
+  margin-top: 0;
+}
+
+.main-vedio-container .vedioHolder .controler .reaction {
+  padding-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  width: 25%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main-vedio-container .vedioHolder .controler .reaction .like,
+.main-vedio-container .vedioHolder .controler .reaction .disLike,
+.main-vedio-container .vedioHolder .controler .reaction .share {
+  cursor: pointer;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -ms-transition: .3s;
+  -o-transition: .3s;
+}
+
+.main-vedio-container .vedioHolder .controler .reaction .like:hover,
+.main-vedio-container .vedioHolder .controler .reaction .disLike:hover,
+.main-vedio-container .vedioHolder .controler .reaction .share:hover {
+  color: #2ad4bc;
+}
+
+.main-vedio-container .vedioHolder .describtion {
+  background-color: #EEE;
+  width: 70%;
+  padding: 50px;
+}
+
+.main-vedio-container .vedioHolder .describtion .timeOfPublish {
+  display: block;
+  text-align: end;
+  margin-top: 25px;
+}
+
+.main-vedio-container aside {
+  width: 100%;
+  overflow: hidden;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 9;
+  -ms-grid-column: 2;
+  grid-area: 1/2/10/2;
+}
+
+.main-vedio-container aside .title {
+  font-size: 25px;
+  border-bottom: 2px #2ad4bc solid;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.main-vedio-container aside .boxContainer {
+  margin-top: 20px;
+}
+
+.main-vedio-container aside .boxContainer .box {
+  margin-bottom: 25px;
+}
+
+.main-vedio-container aside .boxContainer .box:hover img {
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+  transform: scale(1.2) rotate(5deg);
+  -webkit-transform: scale(1.2) rotate(5deg);
+  -moz-transform: scale(1.2) rotate(5deg);
+  -ms-transform: scale(1.2) rotate(5deg);
+  -o-transform: scale(1.2) rotate(5deg);
+}
+
+.main-vedio-container aside .boxContainer .box h2 {
+  cursor: pointer;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -ms-transition: .3s;
+  -o-transition: .3s;
+}
+
+.main-vedio-container aside .boxContainer .box h2:hover {
+  color: #555555;
+}
+
+.main-vedio-container aside .boxContainer .box .veiws {
+  text-align: right;
+  color: #2ad4bc;
+}
+
+.main-vedio-container aside .boxContainer .box .img {
+  overflow: hidden;
+}
+
+.main-vedio-container aside img {
+  width: 100%;
+}
+
+.main-vedio-container .commentSection {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 8;
+  -ms-grid-column: 1;
+  grid-area: 2/1/10/1;
+}
+
+.main-vedio-container .commentSection .controlSetComment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 100%;
+}
+
+.main-vedio-container .commentSection .controlSetComment textarea {
+  display: block;
+  min-height: 200px;
+  padding: 20px;
+  background-color: #EEE;
+  border: none;
+  outline-color: #2ad4bc;
+  resize: vertical;
+}
+
+.main-vedio-container .commentSection .controlSetComment button {
+  height: 50px;
+  width: 100%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-top: 20px;
+  font-weight: bold;
+  border-color: #2ad4bc;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #2ad4bc;
+}
+
+.main-vedio-container .commentSection .controlSetComment button:hover {
+  color: white;
+  background-color: #0e0d0d;
+  border-color: white;
+}
+
+.main-vedio-container .commentSection .commentBox .replyTitle {
+  font-size: 30px;
+  margin-block: 20px;
+  color: #2ad4bc;
+}
+
+.main-vedio-container .commentSection .commentBox .replay .buttonControl button {
+  width: 45%;
+}
+
+.main-vedio-container .commentSection .commentBox .replay .userAndComment {
+  border: 2px solid #2ad4bc;
+}
+
+.main-vedio-container .commentSection .commentBox .userAndComment {
+  background-color: #EEE;
+  padding: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main-vedio-container .commentSection .commentBox .userAndComment textarea {
+  width: 70%;
+  background-color: #EEE;
+  border: none;
+  height: auto;
+}
+
+.main-vedio-container .commentSection .commentBox .userAndComment .userData {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-vedio-container .commentSection .commentBox .userAndComment .userData .controlUserData {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main-vedio-container .commentSection .commentBox .userAndComment .userData .controlUserData .UserName {
+  font-weight: bold;
+}
+
+.main-vedio-container .commentSection .commentBox .userAndComment .userData .img {
+  margin-right: 10px;
+  width: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.main-vedio-container .commentSection .commentBox .userAndComment .userData .img img {
+  width: 100px;
+}
+
+.main-vedio-container .commentSection .commentBox .buttonControl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main-vedio-container .commentSection .commentBox .buttonControl button {
+  width: 30%;
+  height: 50px;
+  font-weight: bold;
+  margin-block: 20px;
+  color: white;
+  background-color: #2ad4bc;
+  border-color: #2ad4bc;
+}
+
+.main-vedio-container .commentSection .commentBox .buttonControl button:hover {
+  color: white;
+  background-color: #0e0d0d;
+  border-color: white;
+}
+/*# sourceMappingURL=main-active-Video.css.map */

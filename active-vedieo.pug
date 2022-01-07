@@ -1,11 +1,18 @@
 
 extends basic-main-page
+block stylesheet
+    
+    link(rel="stylesheet", href="css/main-active-Video.css")
+    
 
 block script
     .main-vedio-container   
         .vedioHolder 
-            iframe( width="1200" height="600" src="https://www.youtube-nocookie.com/embed/IpPbeWsLsEU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+            .ifram
+                iframe(src="https://www.youtube-nocookie.com/embed/IpPbeWsLsEU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
             .controler
+                
+                h2.vedioTitle RESIDENCE of EVIL: VIGIL | GAMEPLAY Development Update | Classic Style Survival Horror Game
                 .reaction 
                     .like 
                         i(class="far fa-thumbs-up")
@@ -16,7 +23,6 @@ block script
                     .share 
                         i(class="far fa-share-square")
                         |  Share
-                h2.vedioTitle RESIDENCE of EVIL: VIGIL | GAMEPLAY Development Update | Classic Style Survival Horror Game
             .describtion 
                 p.desc In this VIGIL development update, we discuss the gameplay mechanics, combinable items, weapons & combat and puzzles. || SUBSCRIBE: http://bit.ly/ROEsubscribe
                 span.timeOfPublish "20/10/2021"
@@ -81,29 +87,41 @@ block script
                         .veiws Views: 5451
 
         .commentSection
-            input(type="text" placeholder="Please Write your Comment on This Vedio")
-            button Submit
+            .controlSetComment
+                textarea(name=""  value="") Please Write your Comment on This Vedio
+                button Submit
             .commentBox
-                .userData
-                    .img 
-                        img(src="images/User.jpg", alt="User Image")
-                    .UserName Mohammed Salah
-                    .date 
-                textarea(id="w3review" name="w3review" rows="4" cols="60" disabled) we should see more and more of these RE classic inspired games. you know, with fixed cam, tank control, inventory management and all. i dont know why big corps has no interest in this field whatsoever. but indi developments like yours is a light at the end of the tunnel. i think we, as a generation raised with a passion of resident evil will absolutely support such endeavors. there are plenty of ways to finance these projects and i hope to see more and more of titles like vigil in the future.
-                button.Edit Edit
-                button.submit Submit
-                .replay 
+                .userAndComment
                     .userData
-                    .img 
-                        img(src="images/User.jpg", alt="User Image")
-                    .UserName Mohammed Salah
-                    .date 
-                    textarea(id="w3review" name="w3review" rows="4" cols="60" disabled) we should see more and more of these RE classic inspired games. you know, with fixed cam, tank control, inventory management and all. i dont know why big corps has no interest in this field whatsoever. but indi developments like yours is a light at the end of the tunnel. i think we, as a generation raised with a passion of resident evil will absolutely support such endeavors. there are plenty of ways to finance these projects and i hope to see more and more of titles like vigil in the future.
+                        .img 
+                            img(src="images/User.jpg", alt="User Image")
+                        .controlUserData
+                            .UserName Mohammed Salah
+                            .date 20/10/2021
+                    textarea(id="w3review" disabled) we should see more and more of these RE classic inspired games. you know, with fixed cam, tank control, inventory management and all. i dont know why big corps has no interest in this field whatsoever. but indi developments like yours is a light at the end of the tunnel. i think we, as a generation raised with a passion of resident evil will absolutely support such endeavors. there are plenty of ways to finance these projects and i hope to see more and more of titles like vigil in the future.
+                .buttonControl
+                    button.replay Reply 
                     button.Edit Edit
                     button.submit Submit
-            
-
+                .replyTitle Replies
+                .replay 
+                    
+                    .userAndComment
+                        .userData
+                            .img 
+                                img(src="images/User.jpg", alt="User Image")
+                            .controlUserData
+                                .UserName Mohammed Salah
+                                .date 20/10/2021
+                        textarea(id="w3review" disabled) we should see more and more of these RE classic inspired games. you know, with fixed cam, tank control, inventory management and all. i dont know why big corps has no interest in this field whatsoever. but indi developments like yours is a light at the end of the tunnel. i think we, as a generation raised with a passion of resident evil will absolutely support such endeavors. there are plenty of ways to finance these projects and i hope to see more and more of titles like vigil in the future.
+                    .buttonControl
+                        
+                        button.Edit Edit
+                        button.submit Submit
     include footer&setting.pug
     script(src="js/global-main-page.js")
+    script(src="js/jquery-3.6.0.min.js")
+    script(src="js/jquery.fitvids.js")
+    script(src="js/active-vedio.js")
 
 
