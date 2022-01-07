@@ -16,12 +16,14 @@ setInterval(() => {
 
 // scroll to target Element
 function Scrool(target, button) {
-    button.addEventListener("click", function() {
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+    if (target) {
+        button.addEventListener("click", function() {
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            })
         })
-    })
+    }
 }
 
 // to scroll into heading 
@@ -51,13 +53,13 @@ const setting = document.querySelector(".Setting")
 const blurE = document.querySelector(".blur")
 const pop = document.querySelector(".pop")
 setting.addEventListener("click", function() {
-    blurE.classList.add("enable")
-    pop.classList.add("enablePop")
+    blurE.classList.toggle("enablePop")
+    pop.classList.toggle("enablePop")
 })
 
 // Close Website Setting
 blurE.addEventListener("click", function() {
-    blurE.classList.remove("enable")
+    blurE.classList.remove("enablePop")
     pop.classList.remove("enablePop")
     navNone.classList.toggle("navToggle")
 })
@@ -65,17 +67,17 @@ blurE.addEventListener("click", function() {
 const buttonCancel = document.querySelectorAll("form button")
 buttonCancel[0].addEventListener("click", function(e) {
     e.preventDefault()
-    blurE.classList.remove("enable")
+    blurE.classList.remove("enablePop")
     pop.classList.remove("enablePop")
 })
 buttonCancel[1].addEventListener("click", function(e) {
     e.preventDefault()
-    blurE.classList.remove("enable")
+    blurE.classList.remove("enablePop")
     pop.classList.remove("enablePop")
 })
 buttonCancel[2].addEventListener("click", function(e) {
     e.preventDefault()
-    blurE.classList.remove("enable")
+    blurE.classList.remove("enablePop")
     pop.classList.remove("enablePop")
 })
 
