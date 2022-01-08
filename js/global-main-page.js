@@ -1,4 +1,34 @@
+const firstContent = document.querySelector(".header-content")
 const sliderContainer = Array.from(document.querySelectorAll(".sliderShow img"))
+const thirdContent = document.querySelectorAll(".header-content")[2]
+const SecondContenet = document.querySelectorAll(".header-content")[1]
+setTimeout(() => {
+    if (window.sessionStorage.getItem("target") == "firstSection") {
+        console.log(window.sessionStorage.getItem("target"))
+        firstContent.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        })
+
+    } else if (window.sessionStorage.getItem("target") == "secondSection") {
+        SecondContenet.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        })
+
+    } else if (window.sessionStorage.getItem("target") == "thirdContent") {
+        console.log(window.sessionStorage.getItem("target"))
+        thirdContent.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        })
+    }
+    setTimeout(() => {
+        window.sessionStorage.removeItem("target")
+    }, 2000);
+
+}, 2000);
+
 
 var x = 1
 setInterval(() => {
@@ -34,17 +64,17 @@ Scrool(heading, startButton)
 
 // to scroll into first topic
 const firstLi = document.querySelector("li")
-const firstContent = document.querySelector(".header-content")
+
 Scrool(firstContent, firstLi)
 
 // To Scroll into the Second Topic
 const SecondLi = document.querySelector("li:nth-child(2)")
-const SecondContenet = document.querySelectorAll(".header-content")[1]
+
 Scrool(SecondContenet, SecondLi)
 
 // Scroll Into Third Topic
 const ThirdLi = document.querySelector("li:last-child")
-const thirdContent = document.querySelectorAll(".header-content")[2]
+
 Scrool(thirdContent, ThirdLi)
 
 
@@ -54,12 +84,14 @@ const blurE = document.querySelector(".blur")
 const pop = document.querySelector(".pop")
 setting.addEventListener("click", function() {
     blurE.classList.toggle("enablePop")
+    blurE.classList.toggle("enable")
     pop.classList.toggle("enablePop")
 })
 
 // Close Website Setting
 blurE.addEventListener("click", function() {
     blurE.classList.remove("enablePop")
+    blurE.classList.remove("enable")
     pop.classList.remove("enablePop")
     navNone.classList.toggle("navToggle")
 })

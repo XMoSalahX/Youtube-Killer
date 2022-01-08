@@ -1,0 +1,133 @@
+@media (max-width:1620px) {
+    .main-vedio-container .vedioHolder .controler h2,
+    .main-vedio-container .vedioHolder .controler .reaction {
+        font-size: 18px;
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment .userData .img {
+        min-width: 100px
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment .userData {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width:1490px) {
+    .main-vedio-container .vedioHolder .controler h2,
+    .main-vedio-container .vedioHolder .controler .reaction {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:1490px) {
+    .main-vedio-container .vedioHolder .controler h2,
+    .main-vedio-container .vedioHolder .controler .reaction {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:1390px) {
+    .main-vedio-container .vedioHolder .controler h2 {
+        font-size: 16px;
+    }
+    .main-vedio-container .vedioHolder .controler .reaction {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:1360px) {
+    .main-vedio-container .vedioHolder .controler h2 {
+        font-size: 16px;
+        width: 60%;
+    }
+    .main-vedio-container .vedioHolder .controler .reaction {
+        width: 37%;
+    }
+}
+
+@media (max-width:1080px) {
+    .vedioHolder {
+        grid-area: 1/1/1/1;
+    }
+    .main-vedio-container .commentSection {
+        grid-area: 2/1/2/1;
+        margin-top: 50px;
+    }
+    .main-vedio-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        grid-template-rows: repeat(3, auto);
+    }
+    .main-vedio-container aside {
+        grid-area: 3/1/3/1;
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment {
+        padding: 30px 10px;
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment .userData {
+        width: 20%;
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment .userData .img {
+        min-width: 80px;
+        height: 80px;
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment .userData .controlUserData {
+        font-size: 14px;
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment textarea {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:650px) {
+    .main-vedio-container .commentSection .commentBox .userAndComment .userData .img {
+        min-width: 50px;
+        height: 50px;
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment .userData .controlUserData {
+        font-size: 10px;
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment textarea {
+        font-size: 10px;
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment .userData .img img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width:450px) {
+    .main-vedio-container .commentSection .commentBox .userAndComment {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    .main-vedio-container .commentSection .commentBox .userAndComment textarea {
+        min-height: 100px;
+        width: 100%;
+        margin-top: 20px;
+        resize: vertical;
+    }
+    .main-vedio-container .vedioHolder .controler h2 {
+        font-size: 12px;
+    }
+    .main-vedio-container .vedioHolder .controler .reaction {
+        font-size: 12px;
+    }
+    .main-vedio-container .vedioHolder .controler .reaction .like,
+    .main-vedio-container .vedioHolder .controler .reaction .disLike,
+    .main-vedio-container .vedioHolder .controler .reaction .share {
+        text-align: center;
+    }
+    .main-vedio-container .vedioHolder .controler .reaction .like i,
+    .main-vedio-container .vedioHolder .controler .reaction .disLike i,
+    .main-vedio-container .vedioHolder .controler .reaction .share i {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .main-vedio-container .vedioHolder .describtion {
+        padding: 30px 10px;
+        font-size: 12px;
+    }
+    .main-vedio-container .commentSection .controlSetComment textarea {
+        font-size: 12px;
+    }
+}

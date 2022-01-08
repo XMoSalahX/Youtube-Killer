@@ -20,28 +20,43 @@ submit.addEventListener("click", function(event) {
     data.name = fullName.value
     data.email = email.value
     data.password = password.value
+    data.acceptTerms = true
     if (checkBox.checked && fullName.value != "" && email.value != "" && password != "") {
-        // display allert
-        allert.style.display = "block";
-        console.log(data)
-            // POST request using fetch()
+
+        // POST request using fetch()
         fetch("#", {
 
-            // Adding method type
-            method: "POST",
+                // Adding method type
+                method: "POST",
 
-            // Adding body or contents to send
-            body: JSON.stringify(data),
+                // Adding body or contents to send
+                body: JSON.stringify(data),
 
-            // Adding headers to the request
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        });
+                // Adding headers to the request
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            // Converting to JSON
+            .then(response => response.json())
+            .then(function(json) {
+                if (json) {
+                    // display allert
+                    allert.style.display = "block";
+                    console.log(data)
+                } else {
+                    allert.style.backgroundColor = "red";
+                    allert.style.color = "white";
+                    allert.innerHTML = data
+                }
+            })
+            .catch(function(err) {
+                console.log(err)
+            });
         // send user to login page
-        setTimeout(() => {
-            window.location = "../../Youtube-Killer/login-page.html"
-        }, 2000);
+        // setTimeout(() => {
+        //     window.location = "../../Youtube-Killer/login-page.html"
+        // }, 2000);
 
     }
 });
@@ -79,18 +94,19 @@ function onSignIn(googleUser) {
     // POST request using fetch()
     fetch("#", {
 
-            // Adding method type
-            method: "POST",
+        // Adding method type
+        method: "POST",
 
-            // Adding body or contents to send
-            body: JSON.stringify(data),
+        // Adding body or contents to send
+        body: JSON.stringify(data),
 
-            // Adding headers to the request
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-        // send user to login page
+        // Adding headers to the request
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+
+    // send user to login page
     setTimeout(() => {
         window.location = "../../Youtube-Killer/login-page.html"
     }, 2000);

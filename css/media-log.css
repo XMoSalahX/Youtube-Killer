@@ -31,7 +31,7 @@
     }
 }
 
-@media (max-width:400px) {
+@media (max-width:450px) {
     .container .center .form-inner .clearfix::before {
         width: 20%;
     }
@@ -41,5 +41,14 @@
     .con-for {
         flex-direction: column;
         gap: 20px;
+    }
+    .container .center .form-inner .socialBox {
+        flex-direction: column;
+    }
+    .container .center .form-inner .socialBox .box {
+        background-color: transparent;
+    }
+    .container .center .form-inner .member {
+        margin-bottom: 20px;
     }
 }

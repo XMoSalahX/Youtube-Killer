@@ -37,6 +37,7 @@
   display: flex;
   font-size: 20px;
   font-weight: bold;
+  gap: 10px;
   width: 25%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -62,8 +63,8 @@
 
 .main-vedio-container .vedioHolder .describtion {
   background-color: #EEE;
-  width: 70%;
   padding: 50px;
+  background-color: #fff2f2;
 }
 
 .main-vedio-container .vedioHolder .describtion .timeOfPublish {
