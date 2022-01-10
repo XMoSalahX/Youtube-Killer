@@ -51,7 +51,7 @@
             <div class="control">
               <div class="UserName">User Name</div>
               <div class="Setting">Settings</div>
-              <button>Sign out</button>
+              <button class="signout">Sign out</button>
             </div>
           </div>
         </div>
@@ -270,13 +270,15 @@
         <form class="passwordChange pop-f" action="#"> 
           <div class="passHead">Change Password</div>
           <p>You should be aware that by clicking on the button below, you agree to the change of password and you will not be able to access the account with the old password again.</p>
-          <input type="password" name="new password" placeholder="Enter New Passowrd">
-          <input type="submit" value="SUBMIT">
+          <input class="recentChange" type="password" placeholder="Enter Recent Passowrd">
+          <input class="newPass" type="password" placeholder="Enter New Passowrd">
+          <input class="change" type="submit" value="SUBMIT">
           <button>Cancel</button>
         </form>
         <form class="frezee pop-f" action="#">
           <div class="freezeHead">Freeze account</div>
           <p>You should be aware that when you press the button below, you acknowledge that you agree to freeze newsletter activity on the account during the period that you specify.</p>
+          <input class="passNow" type="password" placeholder="Enter Account Passowrd">
           <select> 
             <option>24 Hour</option>
             <option>1 Week</option>
@@ -284,9 +286,9 @@
             <option>3 Month</option>
             <option>6 Month</option>
             <option>1 Year</option>
+            <input class="freezeBtn" type="submit" value="SUBMIT">
+            <button>Cancel</button>
           </select>
-          <input type="submit" value="SUBMIT">
-          <button>Cancel</button>
         </form>
         <form class="remove pop-f" action="#">
           <div class="removeHead">Remove account</div>

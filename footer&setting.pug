@@ -7,12 +7,16 @@ footer Developed by Mohammed Salah &copy;
     form(action="#" class="passwordChange pop-f") 
         .passHead Change Password
         p You should be aware that by clicking on the button below, you agree to the change of password and you will not be able to access the account with the old password again.
-        input(type="password" name="new password" placeholder="Enter New Passowrd")
-        input(type="submit" value="SUBMIT") 
+        
+        input(type="password"  placeholder="Enter Recent Passowrd" class="recentChange")
+        input(type="password"  placeholder="Enter New Passowrd" class="newPass")
+        
+        input(type="submit" value="SUBMIT" class="change") 
         button Cancel
     form(action="#" class="frezee pop-f")
         .freezeHead Freeze account
         p You should be aware that when you press the button below, you acknowledge that you agree to freeze newsletter activity on the account during the period that you specify.
+        input(type="password"  placeholder="Enter Account Passowrd" class="passNow")
         select 
             option 24 Hour
             option 1 Week
@@ -20,8 +24,9 @@ footer Developed by Mohammed Salah &copy;
             option 3 Month
             option 6 Month
             option 1 Year
-        input(type="submit" value="SUBMIT") 
-        button Cancel
+        
+            input(type="submit" value="SUBMIT" class="freezeBtn") 
+            button Cancel
     form(action="#" class="remove pop-f")
         .removeHead Remove account
         p You should be aware that by clicking on the button below, you agree to delete the account and you will not be able to log in again with your email and password.

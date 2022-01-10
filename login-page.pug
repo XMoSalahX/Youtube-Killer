@@ -4,8 +4,6 @@ extends basic-log-page.pug
 block mainLog
     h2 Sign Into Your Account
     .allert(style="background-color:#f8d7da")
-        b Sorry
-        |, Something went wrong!
     form(action="#") 
         input(type="email" placeholder="Email Address" name="EmailAdress" required)
         div(class="alert-Box email") Please enter your email address
@@ -18,10 +16,7 @@ block mainLog
             .for
                 a(class="forget" href="./forget.html") Forgot your password?
         input(type="submit" value="Login" id="submit") 
-
 block member 
-    
-
 //- to modifiy script
 block script    
     script(src="js/login.js")
