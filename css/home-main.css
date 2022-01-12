@@ -79,23 +79,18 @@
   border: none;
 }
 
-.pop .pop-f select option {
-  padding-inline: 20px;
-  line-height: 30px;
-}
-
-.pop .pop-f input[type="submit"] {
+.pop input[type="submit"] {
   outline: none;
   color: white;
   background-color: #2ad4bc;
 }
 
-.pop .pop-f input[type="submit"]:hover {
+.pop input[type="submit"]:hover {
   color: white;
   background-color: #0e0d0d;
 }
 
-.pop .pop-f button {
+.pop button {
   padding-inline: 20px;
   padding-block: 20px;
   outline: none;
@@ -104,7 +99,7 @@
   border: none;
 }
 
-.pop .pop-f button:hover {
+.pop button:hover {
   color: white;
   background-color: #0e0d0d;
 }

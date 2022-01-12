@@ -1,10 +1,30 @@
 {
-    // Verify that the user has permissions to access the page or not
-    if (window.sessionStorage.getItem("Access token")) {
-        console.log("The user is authorized to access the content page");
-    } else {
-        window.location = "../login-page.html"
-    }
+
+
+    window.addEventListener("click", function(e) {
+        h2S = document.querySelectorAll("h2")
+        h2S.forEach(function(el) {
+            if (el === e.target) {
+                console.log(e.target.classList[0])
+                fetch(`https://localhost:44349/api/Media/GetSpecificMedia?mediaId=${e.target.classList[0]}&commentsTotalCount=10&repliesTotalCount=10`, {
+                        method: "GET",
+                        headers: {
+                            "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
+                            "Content-type": "application/json; charset=UTF-8"
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(function(json) {
+                        console.log(json)
+                        if (json.hasError === false) {
+                            window.sessionStorage.setItem("Get Post", JSON.stringify(json.data))
+                            window.location = "../active-vedieo.html"
+                        }
+                    })
+                    .catch(err => console.log(err))
+            }
+        })
+    })
 
 
     const firstContent = document.querySelector(".header-content")

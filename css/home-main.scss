@@ -89,25 +89,25 @@
     }
 }
 
-
-}
 .enable {
     display: flex;
     opacity: 1;
     z-index: 3;
 }
+
 .enablePop {
     display: flex;
     opacity: 1;
     z-index: 20;
 }
+
 ::-webkit-scrollbar {
     width: 0;
     /* Remove scrollbar space */
-    
     background: transparent;
     /* Optional: just make scrollbar invisible */
 }
+
 .sliderShow {
     width: 100%;
     position: relative;
@@ -133,6 +133,7 @@
         }
     }
 }
+
 .heading {
     padding-block: 50px;
     text-align: center;
@@ -141,17 +142,14 @@
     h1 {
         font-size: 40px;
     }
-    
     p {
         max-width: 940px;
         margin: auto;
         padding-inline: 20px;
     }
-    
     b {
         color: $green;
     }
-    
     button {
         margin-top: 50px;
         width: 200px;
@@ -165,17 +163,16 @@
         }
     }
 }
+
 // Start nav
 nav {
     //toggel Display
     .navToggle {
         display: block;
     }
-    
     .mobControl {
         display: none;
     }
-    
     .navControl {
         .navMob {
             display: flex;
@@ -211,7 +208,6 @@ nav {
             }
         }
     }
-    
     box-shadow: 1px 20px 20px 0px #0000003b;
     width: 100%;
     height: 60px;
@@ -235,6 +231,7 @@ nav {
         }
     }
 }
+
 //End nav
 // Start main Content
 .content-Container {
@@ -245,7 +242,6 @@ nav {
         margin-top: 50px;
         margin-bottom: 10px;
     }
-    
     .Topic {
         display: flex;
         flex-wrap: wrap;
@@ -298,6 +294,7 @@ nav {
         }
     }
 }
+
 // End main content
 //start Footer 
 footer {
@@ -306,4 +303,5 @@ footer {
     padding-block: 10px;
     color: $white;
 }
+
 // End Footer

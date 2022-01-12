@@ -22,8 +22,213 @@ function catchErorr(target) {
 // data Will be push to database
 let data = {}
 let verificated = false
-    // get data form user from Our Site
+let boolName = false
+let boolPass = false
+let boolEmail = false
+let boolver = false
+let checkName = true
+fullName.addEventListener("input", function() {
+
+
+
+    if (verificated === false) {
+        if (checkName === true) {
+            if (fullName.value == "") {
+
+                alertName.innerHTML = "Please write your name"
+                alertName.style.color = "red"
+            } else if (fullName.value.charAt(0) == " ") {
+                alertName.innerHTML = "Your Name Must start with letter"
+                alertName.style.color = "red"
+            } else if (fullName.value.split(" ").length <= 1) {
+                alertName.innerHTML = "The name must be complete"
+                alertName.style.color = "red"
+            } else {
+                fullName.value.split("").forEach(function(e) {
+                    if (!isNaN(e) && e != " ") {
+                        console.log(e)
+                        alertName.innerHTML = "Your name contains a number, which is incorrect"
+                        alertName.style.color = "red"
+                        fullName.value = ""
+                    } else {
+                        if (fullName.value.split(" ")[1] == "") {
+                            alertName.innerHTML = "The name must be complete"
+                            alertName.style.color = "red"
+                        } else if (fullName.value.split(" ")[1].length <= 2 || fullName.value.split(" ")[0].length <= 2) {
+                            alertName.innerHTML = "No name consists of only two letters or less"
+                            alertName.style.color = "red"
+                        } else {
+                            alertName.innerHTML = "Great!"
+                            alertName.style.color = "#2ad4bc"
+                            boolName = true
+                        }
+                    }
+                })
+            }
+        }
+
+    } else {
+        let ver = fullName.value.split("-")
+        if (ver.length >= 5) {
+            if (ver[ver.length - 1] === "") {
+                alertName.innerHTML = "verifiction code is wrong"
+                alertName.style.color = "red"
+                boolver = false
+            } else {
+                fullName.value.split("").forEach(function(e) {
+                    if (e === " ") {
+                        alertName.innerHTML = "verifiction code is wrong"
+                        alertName.style.color = "red"
+                        boolver = false
+                    } else {
+                        alertName.innerHTML = "Great!"
+                        alertName.style.color = "#2ad4bc"
+                        boolver = true
+                    }
+                })
+
+            }
+        } else {
+            alertName.innerHTML = "verifiction code is wrong"
+            alertName.style.color = "red"
+            boolver = false
+        }
+    }
+
+})
+
+email.addEventListener("input", function() {
+    if (email.value == "") {
+        alertEmail.innerHTML = "Please write your Email"
+        alertEmail.style.color = "red"
+    } else {
+        if (validateEmail(email.value)) {
+            alertEmail.innerHTML = "Great!"
+            alertEmail.style.color = "#2ad4bc"
+            boolEmail = true
+        } else {
+            alertEmail.innerHTML = "The email is incorrect"
+            alertEmail.style.color = "red"
+        }
+    }
+})
+
+password.addEventListener("input", function() {
+    if (password.value == "") {
+        alertPass.innerHTML = "Password is empty"
+        alertPass.style.color = "red"
+    } else {
+        if (password.value.match(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/)) {
+            alertPass.innerHTML = "Great!"
+            alertPass.style.color = "#2ad4bc"
+            boolPass = true
+        } else {
+            alertPass.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character."
+            alertPass.style.color = "red"
+        }
+    }
+})
+
+function validateEmail(emailAdress) {
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (emailAdress.match(regexEmail)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+// get data form user from Our Site
 submit.addEventListener("click", function(event) {
+
+    if (checkName === true) {
+        if (fullName.value == "") {
+            alertName.innerHTML = "Please write your name"
+            alertName.style.color = "red"
+        } else if (fullName.value.charAt(0) == " ") {
+            alertName.innerHTML = "Your Name Must start with letter"
+            alertName.style.color = "red"
+        } else if (fullName.value.split(" ").length <= 1) {
+            alertName.innerHTML = "The name must be complete"
+            alertName.style.color = "red"
+        } else {
+            fullName.value.split("").forEach(function(e) {
+                if (!isNaN(e) && e != " ") {
+                    console.log(e)
+                    alertName.innerHTML = "Your name contains a number, which is incorrect"
+                    alertName.style.color = "red"
+                    fullName.value = ""
+                } else {
+                    if (fullName.value.split(" ")[1] == "") {
+                        alertName.innerHTML = "The name must be complete"
+                        alertName.style.color = "red"
+                    } else if (fullName.value.split(" ")[1].length <= 2 || fullName.value.split(" ")[0].length <= 2) {
+                        alertName.innerHTML = "No name consists of only two letters or less"
+                        alertName.style.color = "red"
+                    } else {
+                        alertName.innerHTML = "Great!"
+                        alertName.style.color = "#2ad4bc"
+                        boolName = true
+                    }
+                }
+            })
+        }
+    }
+    if (checkName === true) {
+        if (password.value == "") {
+            alertPass.innerHTML = "Password is empty"
+            alertPass.style.color = "red"
+        } else {
+            if (password.value.match(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/)) {
+                alertPass.innerHTML = "Great!"
+                alertPass.style.color = "#2ad4bc"
+                boolPass = true
+            } else {
+                alertPass.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character."
+                alertPass.style.color = "red"
+            }
+        }
+    }
+    if (email.value == "") {
+        alertEmail.innerHTML = "Please write your Email"
+        alertEmail.style.color = "red"
+    } else {
+        if (validateEmail(email.value)) {
+            alertEmail.innerHTML = "Great!"
+            alertEmail.style.color = "#2ad4bc"
+            boolEmail = true
+        } else {
+            alertEmail.innerHTML = "The email is incorrect"
+            alertEmail.style.color = "red"
+        }
+    }
+    if (fullName.value == "") {
+        alertName.innerHTML = "Please write your name"
+        alertName.style.color = "red"
+    }
+    if (email.value == "") {
+        alertEmail.innerHTML = "Please write your Email"
+        alertEmail.style.color = "red"
+    }
+    if (password.value == "") {
+        alertPass.innerHTML = "Password is empty"
+        alertPass.style.color = "red"
+    }
+    if (!checkBox.checked) {
+        allert.style.display = "block"
+        allert.innerHTML = "You must agree to the terms of service"
+        allert.style.backgroundColor = "#f8d7da"
+        setTimeout(function() {
+            allert.style.display = "none"
+        }, 5000)
+    }
+
+    if (boolEmail === false || boolPass === false || boolName === false || !checkBox.checked) {
+        boolName = false
+        boolPass = false
+        boolEmail = false
+    }
     event.preventDefault()
     if (verificated === false) {
         data.name = fullName.value
@@ -31,7 +236,7 @@ submit.addEventListener("click", function(event) {
         data.password = password.value
         data.age = 21
         data.acceptTerms = true
-        if (checkBox.checked && fullName.value != "" && email.value != "" && password != "") {
+        if (checkBox.checked && boolName && boolPass && boolEmail) {
 
             // POST request using fetch()
             fetch("https://localhost:44349/api/Account/Register", {
@@ -54,7 +259,7 @@ submit.addEventListener("click", function(event) {
                     if (json.hasError === false) {
                         let countRedirect = 5
                         let timer = setInterval(() => {
-                            allert.innerHTML = `<b>Congrats</b>, your account has been created!. We will redirect you ${countRedirect}`
+                            allert.innerHTML = `<b>Congrats</b>, We received the data!. We will redirect you to verification page ${countRedirect}`
                             allert.style.backgroundColor = "#d1e7dd"
                             countRedirect--
                         }, 1000);
@@ -70,7 +275,7 @@ submit.addEventListener("click", function(event) {
                             terms.style.display = "none"
                             fullName.value = ""
                             fullName.setAttribute("placeholder", "Enter verification code")
-                            alertName.innerHTML = "Please Enter your verification code"
+                            alertName.innerHTML = ""
                             submit.value = "Verification"
                             verificated = true
                         }, 6000);
@@ -95,36 +300,42 @@ submit.addEventListener("click", function(event) {
                 });
         }
     } else {
-        // data.verificationCode = "mohammedska sd askjasjasbda s 151 51 51"
-        fetch(`https://localhost:44349/api/Account/VerifyAccount?verificationCode=${fullName.value}`, {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            })
-            .then(response => response.json())
-            .then(function(json) {
-                console.log(json)
-                if (json.hasError === false) {
-                    allert.style.display = "block"
-                    let countRedirect = 5
-                    let timer = setInterval(() => {
-                        allert.innerHTML = `<b>Congrats</b>, your account has been activated!. We will redirect you ${countRedirect}`
-                        allert.style.backgroundColor = "#d1e7dd"
-                        countRedirect--
-                    }, 1000);
-                    allert.style.display = "block"
-                    setTimeout(() => {
-                        window.location = "../login-page.html"
-                    }, 6000);
-                } else {
-                    alertName.innerHTML = json.errorsDictionary.FormValidationError_VerificationCode
-                    catchErorr(alertName)
-                }
-            })
-            .catch(function(err) {
-                console.log(err)
-            });
+        checkName = false
+
+        if (boolver) {
+            fetch(`https://localhost:44349/api/Account/VerifyAccount?verificationCode=${fullName.value}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                })
+                .then(response => response.json())
+                .then(function(json) {
+                    console.log(json)
+                    if (json.hasError === false) {
+                        allert.style.display = "block"
+                        let countRedirect = 5
+                        let timer = setInterval(() => {
+                            allert.innerHTML = `<b>Congrats</b>, your account has been activated!. We will redirect you ${countRedirect}`
+                            allert.style.backgroundColor = "#d1e7dd"
+                            countRedirect--
+                        }, 1000);
+                        allert.style.display = "block"
+                        setTimeout(() => {
+                            window.location = "../login-page.html"
+                        }, 6000);
+                    } else {
+                        alertName.innerHTML = json.errorsDictionary.FormValidationError_VerificationCode
+                        catchErorr(alertName)
+                    }
+                })
+                .catch(function(err) {
+                    console.log(err)
+                });
+        } else {
+            alertName.innerHTML = "verifiction code is incorrect"
+            alertName.style.color = "red"
+        }
     }
 });
 

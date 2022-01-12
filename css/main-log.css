@@ -255,4 +255,8 @@
 .container .imgControl img {
   max-width: 700px;
 }
+
+.container .center .form-inner a.loginHere {
+  color: #269c8c;
+}
 /*# sourceMappingURL=main-log.css.map */

@@ -264,7 +264,7 @@
 }
 
 .main-vedio-container .commentSection .commentBox .buttonControl button {
-  width: 30%;
+  width: 45%;
   height: 50px;
   font-weight: bold;
   margin-block: 20px;
@@ -277,5 +277,10 @@
   color: white;
   background-color: #0e0d0d;
   border-color: white;
+}
+
+.main-vedio-container .commentSection .commentBox .userAndComment textarea {
+  resize: vertical;
+  outline: none;
 }
 /*# sourceMappingURL=main-active-Video.css.map */

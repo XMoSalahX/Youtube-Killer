@@ -192,7 +192,7 @@
                 display: flex;
                 justify-content: space-between;
                 button {
-                    width: 30%;
+                    width: 45%;
                     height: 50px;
                     font-weight: bold;
                     margin-block: 20px;
@@ -208,4 +208,9 @@
             }
         }
     }
+}
+
+.main-vedio-container .commentSection .commentBox .userAndComment textarea {
+    resize: vertical;
+    outline: none;
 }
