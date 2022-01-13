@@ -34,6 +34,7 @@ thirdSection.addEventListener("click", function() {
     window.sessionStorage.setItem("target", "thirdContent")
     window.location = "../home-page.html"
 })
+let reload = false
 console.log(JSON.parse(window.sessionStorage.getItem("Get Post")).mediaItem.mediaId)
 fetch(`https://localhost:44349/api/Media/GetSpecificMedia?mediaId=${JSON.parse(window.sessionStorage.getItem("Get Post")).mediaItem.mediaId}&commentsTotalCount=10&repliesTotalCount=10`, {
         method: "GET",
@@ -47,11 +48,11 @@ fetch(`https://localhost:44349/api/Media/GetSpecificMedia?mediaId=${JSON.parse(w
         console.log(json)
         window.sessionStorage.removeItem("Get Post")
         window.sessionStorage.setItem("Get Post", JSON.stringify(json.data))
+        reload = true
         start()
-    })
 
-const videoData = JSON.parse(sessionStorage.getItem("Get Post"))
-console.log(videoData)
+    })
+var videoData = JSON.parse(sessionStorage.getItem("Get Post"))
 const videoHolder = document.querySelector(".vedioHolder")
 videoHolder.innerHTML = `<div class="ifram">
     <iframe src="${videoData.mediaItem.source}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -71,57 +72,59 @@ videoHolder.innerHTML = `<div class="ifram">
     <p class="desc">${videoData.mediaItem.description}</p><span class="timeOfPublish">${videoData.mediaItem.createdAt}</span>
     </div>`
 
-const like = document.querySelector(".like")
-const disLike = document.querySelector(".disLike")
+function start() {
+    videoData = JSON.parse(sessionStorage.getItem("Get Post"))
+    const like = document.querySelector(".like")
+    const disLike = document.querySelector(".disLike")
 
-if (videoData.mediaItem.react === 1) {
-    like.style.color = "#2ad4bc"
-} else if (videoData.mediaItem.react === 2) {
-    disLike.style.color = "#2ad4bc"
-}
+    if (videoData.mediaItem.react === 1) {
+        like.style.color = "#2ad4bc"
+    } else if (videoData.mediaItem.react === 2) {
+        disLike.style.color = "#2ad4bc"
+    }
 
-like.addEventListener("click", function() {
-    like.style.color = "#2ad4bc"
-    disLike.style.color = "black"
-    let data = {}
-    data.mediaId = videoData.mediaItem.mediaId
-    data.reactTypeId = 1
-    fetch("https://localhost:44349/api/Media/AddOrRemoveMediaReact", {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
-                "Content-type": "application/json; charset=UTF-8"
-            },
-            body: JSON.stringify(data)
-        }).then(response => response.json())
-        .then(function(json) {
-            console.log(json)
-        })
-        .catch(err => console.log(err))
-})
+    like.addEventListener("click", function() {
+        like.style.color = "#2ad4bc"
+        disLike.style.color = "black"
+        let data = {}
+        data.mediaId = videoData.mediaItem.mediaId
+        data.reactTypeId = 1
+        fetch("https://localhost:44349/api/Media/AddOrRemoveMediaReact", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify(data)
+            }).then(response => response.json())
+            .then(function(json) {
+                console.log(json)
+            })
+            .catch(err => console.log(err))
+    })
 
 
-disLike.addEventListener("click", function() {
-    disLike.style.color = "#2ad4bc"
-    like.style.color = "black"
-    let data = {}
-    data.mediaId = videoData.mediaItem.mediaId
-    data.reactTypeId = 2
-    fetch("https://localhost:44349/api/Media/AddOrRemoveMediaReact", {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
-                "Content-type": "application/json; charset=UTF-8"
-            },
-            body: JSON.stringify(data)
-        }).then(response => response.json())
-        .then(function(json) {
-            console.log(json)
-        })
-        .catch(err => console.log(err))
-})
+    disLike.addEventListener("click", function() {
+        disLike.style.color = "#2ad4bc"
+        like.style.color = "black"
+        let data = {}
+        data.mediaId = videoData.mediaItem.mediaId
+        data.reactTypeId = 2
+        fetch("https://localhost:44349/api/Media/AddOrRemoveMediaReact", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify(data)
+            }).then(response => response.json())
+            .then(function(json) {
+                console.log(json)
+            })
+            .catch(err => console.log(err))
+    })
 
-async function start() {
+
 
 
 
