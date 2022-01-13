@@ -283,4 +283,8 @@
   resize: vertical;
   outline: none;
 }
+
+.main-vedio-container .vedioHolder .describtion {
+  margin-bottom: 20px;
+}
 /*# sourceMappingURL=main-active-Video.css.map */

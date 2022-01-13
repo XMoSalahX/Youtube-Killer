@@ -34,25 +34,42 @@ thirdSection.addEventListener("click", function() {
     window.sessionStorage.setItem("target", "thirdContent")
     window.location = "../home-page.html"
 })
-
+console.log(JSON.parse(window.sessionStorage.getItem("Get Post")).mediaItem.mediaId)
+fetch(`https://localhost:44349/api/Media/GetSpecificMedia?mediaId=${JSON.parse(window.sessionStorage.getItem("Get Post")).mediaItem.mediaId}&commentsTotalCount=10&repliesTotalCount=10`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    .then(response => response.json())
+    .then(function(json) {
+        console.log(json)
+        window.sessionStorage.removeItem("Get Post")
+        window.sessionStorage.setItem("Get Post", JSON.stringify(json.data))
+        start()
+    })
 
 const videoData = JSON.parse(sessionStorage.getItem("Get Post"))
 console.log(videoData)
 const videoHolder = document.querySelector(".vedioHolder")
 videoHolder.innerHTML = `<div class="ifram">
-<iframe src="${videoData.mediaItem.source}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-<div class="controler">
-<h2 class="vedioTitle">${videoData.mediaItem.title}</h2>
-<div class="reaction"> 
-  <div class="like"> <i class="far fa-thumbs-up"></i> Like</div>
-  <div class="disLike"> <i class="far fa-thumbs-down"></i> DisLike</div>
-  <div class="share"> <i class="far fa-share-square"></i> Share</div>
-</div>
-</div>
-<div class="describtion"> 
-<p class="desc">${videoData.mediaItem.description}</p><span class="timeOfPublish">${videoData.mediaItem.createdAt}</span>
-</div>`
+    <iframe src="${videoData.mediaItem.source}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="controler">
+    <h2 class="vedioTitle">${videoData.mediaItem.title}</h2>
+    <div class="reaction"> 
+      <div class="like"> <i class="far fa-thumbs-up"></i> Like</div>
+      <div class="disLike"> <i class="far fa-thumbs-down"></i> DisLike</div>
+      <div class="share"> <i class="far fa-share-square"></i> Share</div>
+      
+    </div>
+    
+    </div>
+    <div class="sharethis-inline-share-buttons" style="margin-bottom:20px"></div> 
+    <div class="describtion"> 
+    <p class="desc">${videoData.mediaItem.description}</p><span class="timeOfPublish">${videoData.mediaItem.createdAt}</span>
+    </div>`
 
 const like = document.querySelector(".like")
 const disLike = document.querySelector(".disLike")
@@ -104,201 +121,203 @@ disLike.addEventListener("click", function() {
         .catch(err => console.log(err))
 })
 
+function start() {
 
 
-const sidebar = document.querySelector(".boxContainer")
-for (i = 0; i < videoData.suggestedMedia.length; i++) {
-    console.log(i)
-    let box = document.createElement("div")
-    box.classList = "box"
-    sidebar.appendChild(box)
-    let divImg = document.createElement("div")
-    divImg.classList = "img"
-    box.appendChild(divImg)
-    let realImg = document.createElement("img")
-    realImg.setAttribute("src", videoData.suggestedMedia[i].coverSource)
-    divImg.appendChild(realImg)
-    let content = document.createElement("div")
-    content.classList = "boxContent"
-    box.appendChild(content)
-    let h2 = document.createElement("h2")
-    h2.innerHTML = videoData.suggestedMedia[i].title
-    h2.classList = videoData.suggestedMedia[i].id
-    content.appendChild(h2)
-    let p = document.createElement("p")
-    p.innerHTML = videoData.suggestedMedia[i].description + "......."
-    content.appendChild(p)
-    let view = document.createElement("div")
-    view.classList = "veiws"
-    view.innerHTML = "Views: " + videoData.suggestedMedia[i].viewsCount
-    view.style.textAlign = "right"
-    view.style.color = "#2ad4bc"
-    view.style.marginBlock = "10px"
-    content.appendChild(view)
-}
 
-
-window.addEventListener("click", function(e) {
-    h2S = document.querySelectorAll(".box h2")
-    h2S.forEach(function(el) {
-        if (el === e.target) {
-            console.log(e.target.classList[0])
-            fetch(`https://localhost:44349/api/Media/GetSpecificMedia?mediaId=${e.target.classList[0]}&commentsTotalCount=10&repliesTotalCount=10`, {
-                    method: "GET",
-                    headers: {
-                        "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
-                        "Content-type": "application/json; charset=UTF-8"
-                    }
-                })
-                .then(response => response.json())
-                .then(function(json) {
-                    console.log(json)
-                    if (json.hasError === false) {
-                        window.sessionStorage.setItem("Get Post", JSON.stringify(json.data))
-                        window.location = "../active-vedieo.html"
-                    }
-                })
-                .catch(err => console.log(err))
-        }
-    })
-    let edit = document.querySelectorAll("button.Edit")
-    edit.forEach(function(el) {
-        if (e.target === el) {
-            console.log(el.classList[1] + "Mohammed")
-            const area = document.querySelector(`textarea.${e.target.classList[1]}`)
-            console.log(document.querySelector(`textarea.${e.target.classList[1]}`))
-            area.removeAttribute("disabled")
-            area.style.backgroundColor = "#d1e7dd"
-            const allera = document.querySelector(`.userAndComment.${el.classList[1]}`)
-            allera.style.backgroundColor = "#d1e7dd"
-            console.log(e.target)
-            e.target.style.display = "none"
-            const openSubmit = document.querySelector(`.submit.${el.classList[1]}`)
-            openSubmit.style.display = "block"
-        }
-    })
-    let subedit = document.querySelectorAll("button.submit")
-    subedit.forEach(function(el) {
-        if (e.target === el) {
-            console.log(`textarea.${el.classList[0]}`)
-            const area = document.querySelector(`textarea.${el.classList[0]}`)
-            area.setAttribute("disabled", "")
-            area.style.backgroundColor = "#EEE"
-            const allera = document.querySelector(`.userAndComment.${e.target.classList[1]}`)
-            allera.style.backgroundColor = "#EEE"
-            let data = {}
-            data.commentId = el.classList[1]
-            data.commentText = area.value
-            fetch("https://localhost:44349/api/Media/EditMediaComment", {
-                    method: "POST",
-                    headers: {
-                        "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
-                        "Content-type": "application/json; charset=UTF-8"
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(function(json) {
-                    console.log(json)
-                })
-            const openSubmit = document.querySelector(`.submit.${el.classList[1]}`)
-            openSubmit.style.display = "none"
-            const disEd = document.querySelector(`.Edit.${el.classList[1]}`)
-            disEd.style.display = "block"
-        }
-    })
-})
-const addComment = document.querySelector(".addCommentNow")
-let commentFieldClicked = true
-addComment.addEventListener("click", function() {
-    if (commentFieldClicked) {
-        addComment.innerHTML = ""
-        commentFieldClicked = false
+    const sidebar = document.querySelector(".boxContainer")
+    for (i = 0; i < videoData.suggestedMedia.length; i++) {
+        console.log(i)
+        let box = document.createElement("div")
+        box.classList = "box"
+        sidebar.appendChild(box)
+        let divImg = document.createElement("div")
+        divImg.classList = "img"
+        box.appendChild(divImg)
+        let realImg = document.createElement("img")
+        realImg.setAttribute("src", videoData.suggestedMedia[i].coverSource)
+        divImg.appendChild(realImg)
+        let content = document.createElement("div")
+        content.classList = "boxContent"
+        box.appendChild(content)
+        let h2 = document.createElement("h2")
+        h2.innerHTML = videoData.suggestedMedia[i].title
+        h2.classList = videoData.suggestedMedia[i].id
+        content.appendChild(h2)
+        let p = document.createElement("p")
+        p.innerHTML = videoData.suggestedMedia[i].description + "......."
+        content.appendChild(p)
+        let view = document.createElement("div")
+        view.classList = "veiws"
+        view.innerHTML = "Views: " + videoData.suggestedMedia[i].viewsCount
+        view.style.textAlign = "right"
+        view.style.color = "#2ad4bc"
+        view.style.marginBlock = "10px"
+        content.appendChild(view)
     }
-})
-const commentContainer = document.querySelector(".commentBox")
-for (i = 0; i < videoData.mediaItem.comments.length; i++) {
-    const buttonControl = document.createElement("div")
-    buttonControl.classList = "buttonControl"
-    commentContainer.prepend(buttonControl)
-    const replay = document.createElement("button")
-    replay.classList = `replay ${videoData.mediaItem.comments[i].commentId}`
-    buttonControl.append(replay)
-    replay.innerHTML = "Reply"
 
-    if (videoData.mediaItem.comments[i].isCurrenctUser) {
-        const Edit = document.createElement("button")
-        Edit.classList = `Edit ${videoData.mediaItem.comments[i].commentId}`
-        Edit.innerHTML = "Edit"
-        buttonControl.appendChild(Edit)
+
+    window.addEventListener("click", function(e) {
+        h2S = document.querySelectorAll(".box h2")
+        h2S.forEach(function(el) {
+            if (el === e.target) {
+                console.log(e.target.classList[0])
+                fetch(`https://localhost:44349/api/Media/GetSpecificMedia?mediaId=${e.target.classList[0]}&commentsTotalCount=10&repliesTotalCount=10`, {
+                        method: "GET",
+                        headers: {
+                            "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
+                            "Content-type": "application/json; charset=UTF-8"
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(function(json) {
+                        console.log(json)
+                        if (json.hasError === false) {
+                            window.sessionStorage.setItem("Get Post", JSON.stringify(json.data))
+                            window.location = "../active-vedieo.html"
+                        }
+                    })
+                    .catch(err => console.log(err))
+            }
+        })
+        let edit = document.querySelectorAll("button.Edit")
+        edit.forEach(function(el) {
+            if (e.target === el) {
+                console.log(el.classList[1] + "Mohammed")
+                const area = document.querySelector(`textarea.${e.target.classList[1]}`)
+                console.log(document.querySelector(`textarea.${e.target.classList[1]}`))
+                area.removeAttribute("disabled")
+                area.style.backgroundColor = "#d1e7dd"
+                const allera = document.querySelector(`.userAndComment.${el.classList[1]}`)
+                allera.style.backgroundColor = "#d1e7dd"
+                console.log(e.target)
+                e.target.style.display = "none"
+                const openSubmit = document.querySelector(`.submit.${el.classList[1]}`)
+                openSubmit.style.display = "block"
+            }
+        })
+        let subedit = document.querySelectorAll("button.submit")
+        subedit.forEach(function(el) {
+            if (e.target === el) {
+                console.log(`textarea.${el.classList[0]}`)
+                const area = document.querySelector(`textarea.${el.classList[0]}`)
+                area.setAttribute("disabled", "")
+                area.style.backgroundColor = "#EEE"
+                const allera = document.querySelector(`.userAndComment.${e.target.classList[1]}`)
+                allera.style.backgroundColor = "#EEE"
+                let data = {}
+                data.commentId = el.classList[1]
+                data.commentText = area.value
+                fetch("https://localhost:44349/api/Media/EditMediaComment", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
+                            "Content-type": "application/json; charset=UTF-8"
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => response.json())
+                    .then(function(json) {
+                        console.log(json)
+                    })
+                const openSubmit = document.querySelector(`.submit.${el.classList[1]}`)
+                openSubmit.style.display = "none"
+                const disEd = document.querySelector(`.Edit.${el.classList[1]}`)
+                disEd.style.display = "block"
+            }
+        })
+    })
+    const addComment = document.querySelector(".addCommentNow")
+    let commentFieldClicked = true
+    addComment.addEventListener("click", function() {
+        if (commentFieldClicked) {
+            addComment.innerHTML = ""
+            commentFieldClicked = false
+        }
+    })
+    const commentContainer = document.querySelector(".commentBox")
+    for (i = 0; i < videoData.mediaItem.comments.length; i++) {
+        const buttonControl = document.createElement("div")
+        buttonControl.classList = "buttonControl"
+        commentContainer.prepend(buttonControl)
+        const replay = document.createElement("button")
+        replay.classList = `replay ${videoData.mediaItem.comments[i].commentId}`
+        buttonControl.append(replay)
+        replay.innerHTML = "Reply"
+
+        if (videoData.mediaItem.comments[i].isCurrenctUser) {
+            const Edit = document.createElement("button")
+            Edit.classList = `Edit ${videoData.mediaItem.comments[i].commentId}`
+            Edit.innerHTML = "Edit"
+            buttonControl.appendChild(Edit)
+        }
+        const submit = document.createElement("button")
+        submit.classList = `submit ${videoData.mediaItem.comments[i].commentId}`
+        submit.innerHTML = "Submit"
+        buttonControl.appendChild(submit)
+        submit.style.display = "none"
+        const userAndComment = document.createElement("div")
+        commentContainer.prepend(userAndComment)
+        userAndComment.classList = `userAndComment ${videoData.mediaItem.comments[i].commentId}`
+        const userData = document.createElement("div")
+        userData.classList = "userData"
+        userAndComment.append(userData)
+        const img = document.createElement("div")
+        img.classList = "img"
+        userData.append(img)
+        img.innerHTML = `<img src="images/User.jpg" alt="User Image"></div>`
+        const controlUserData = document.createElement("div")
+        controlUserData.classList = "controlUserData"
+        userData.append(controlUserData)
+        const UserName = document.createElement("div")
+        UserName.classList = "UserName"
+        UserName.innerHTML = videoData.mediaItem.comments[i].commenterName
+        controlUserData.append(UserName)
+        const date = document.createElement("div")
+        date.classList = "date"
+        date.innerHTML = videoData.mediaItem.comments[i].commentCreationTime
+        controlUserData.append(date)
+        const textarea = document.createElement("textarea")
+
+        textarea.classList = `${videoData.mediaItem.comments[i].commentId}`
+        userAndComment.append(textarea)
+        textarea.setAttribute("disabled", "")
+        textarea.innerHTML = videoData.mediaItem.comments[i].commentText
     }
-    const submit = document.createElement("button")
-    submit.classList = `submit ${videoData.mediaItem.comments[i].commentId}`
-    submit.innerHTML = "Submit"
-    buttonControl.appendChild(submit)
-    submit.style.display = "none"
-    const userAndComment = document.createElement("div")
-    commentContainer.prepend(userAndComment)
-    userAndComment.classList = `userAndComment ${videoData.mediaItem.comments[i].commentId}`
-    const userData = document.createElement("div")
-    userData.classList = "userData"
-    userAndComment.append(userData)
-    const img = document.createElement("div")
-    img.classList = "img"
-    userData.append(img)
-    img.innerHTML = `<img src="images/User.jpg" alt="User Image"></div>`
-    const controlUserData = document.createElement("div")
-    controlUserData.classList = "controlUserData"
-    userData.append(controlUserData)
-    const UserName = document.createElement("div")
-    UserName.classList = "UserName"
-    UserName.innerHTML = videoData.mediaItem.comments[i].commenterName
-    controlUserData.append(UserName)
-    const date = document.createElement("div")
-    date.classList = "date"
-    date.innerHTML = videoData.mediaItem.comments[i].commentCreationTime
-    controlUserData.append(date)
-    const textarea = document.createElement("textarea")
+    const submitComment = document.querySelector(".submitComment")
+    submitComment.addEventListener("click", function() {
+        data = {}
+        data.mediaId = videoData.mediaItem.mediaId
+        data.commentText = addComment.value
+        if (addComment.value != "Please Write your Comment on This Video ") {
+            if (addComment.value != "") {
+                fetch("https://localhost:44349/api/Media/AddMediaComment", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
+                            "Content-type": "application/json; charset=UTF-8"
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => response.json())
+                    .then(function(json) {
+                        console.log(json)
+                        const userAndComment = document.createElement("div")
 
-    textarea.classList = `${videoData.mediaItem.comments[i].commentId}`
-    userAndComment.append(textarea)
-    textarea.setAttribute("disabled", "")
-    textarea.innerHTML = videoData.mediaItem.comments[i].commentText
-}
-const submitComment = document.querySelector(".submitComment")
-submitComment.addEventListener("click", function() {
-    data = {}
-    data.mediaId = videoData.mediaItem.mediaId
-    data.commentText = addComment.value
-    if (addComment.value != "Please Write your Comment on This Video ") {
-        if (addComment.value != "") {
-            fetch("https://localhost:44349/api/Media/AddMediaComment", {
-                    method: "POST",
-                    headers: {
-                        "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
-                        "Content-type": "application/json; charset=UTF-8"
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(function(json) {
-                    console.log(json)
-                    const userAndComment = document.createElement("div")
-
-                    userAndComment.style.marginBottom = "10px"
-                    userAndComment.classList = "userAndComment"
-                    const buttonControl = document.createElement('div')
-                    buttonControl.classList = ".buttonControl"
-                    commentContainer.prepend(buttonControl)
-                    buttonControl.classList = "buttonControl"
-                    buttonControl.innerHTML = `
+                        userAndComment.style.marginBottom = "10px"
+                        userAndComment.classList = "userAndComment"
+                        const buttonControl = document.createElement('div')
+                        buttonControl.classList = ".buttonControl"
+                        commentContainer.prepend(buttonControl)
+                        buttonControl.classList = "buttonControl"
+                        buttonControl.innerHTML = `
                         <button class="replay">Reply </button>
                         <button class="Edit">Edit</button>
-                        <button class="submit">Submit</button>`
-                    commentContainer.prepend(userAndComment)
-                    const d = new Date();
+                        <button class="submit" style="display:none">Submit</button>`
+                        commentContainer.prepend(userAndComment)
+                        const d = new Date();
 
-                    userAndComment.innerHTML = `<div class="userData">
+                        userAndComment.innerHTML = `<div class="userData">
                         <div class="img"> <img src="images/User.jpg" alt="User Image"></div>
                         <div class="controlUserData">
                             <div class="UserName">${JSON.parse(window.sessionStorage.getItem("Username"))}</div>
@@ -309,8 +328,18 @@ submitComment.addEventListener("click", function() {
                     </div>
                     `
 
-                })
-                .catch(err => console.log(err))
+                    })
+                    .catch(err => console.log(err))
+            }
         }
-    }
+    })
+    setTimeout(function(params) {
+        document.querySelector(".st-cmp-settings").style.display = "none"
+    }, 1500)
+}
+
+document.querySelector(".sharethis-inline-share-buttons").style.visibility = "hidden"
+const share = document.querySelector(".share")
+share.addEventListener("click", function() {
+    document.querySelector(".sharethis-inline-share-buttons").style.visibility = "visible"
 })

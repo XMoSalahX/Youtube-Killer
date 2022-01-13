@@ -9,14 +9,16 @@ footer Developed by Mohammed Salah &copy;
         p You should be aware that by clicking on the button below, you agree to the change of password and you will not be able to access the account with the old password again.
         
         input(type="password"  placeholder="Enter Recent Passowrd" class="recentChange")
+        span(class="allertOldPass")
         input(type="password"  placeholder="Enter New Passowrd" class="newPass")
-        
+        span(class="allertNewPass")
         input(type="submit" value="SUBMIT" class="change") 
         button Cancel
     form(action="#" class="frezee pop-f")
         .freezeHead Freeze account
-        p You should be aware that when you press the button below, you acknowledge that you agree to freeze newsletter activity on the account during the period that you specify.
+        p You should be aware that by clicking on the button below, you agree to suspend the account during the specified period and cannot access the account during that period.
         input(type="password"  placeholder="Enter Account Passowrd" class="passNow")
+        span(class="allertOlllldPasss")
         select 
             option 24 Hour
             option 1 Week
@@ -24,13 +26,11 @@ footer Developed by Mohammed Salah &copy;
             option 3 Month
             option 6 Month
             option 1 Year
+            option Forever
+        span(class="allertSeelect")
         
-            input(type="submit" value="SUBMIT" class="freezeBtn") 
-            button Cancel
-    form(action="#" class="remove pop-f")
-        .removeHead Remove account
-        p You should be aware that by clicking on the button below, you agree to delete the account and you will not be able to log in again with your email and password.
-        input(type="text" placeholder="Please type the word \"Delete\" in this field.")
-        input(type="submit" value="SUBMIT") 
+        input(type="submit" value="SUBMIT" class="freezeBtn") 
         button Cancel
+        
+    
 // End Setting

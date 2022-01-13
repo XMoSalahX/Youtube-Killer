@@ -295,6 +295,25 @@ nav {
     }
 }
 
+.pop .pop-f input[type="password"],
+.pop .pop-f input,
+.pop .pop-f select {
+    margin-bottom: 0;
+}
+
+.allertOldPass,
+.allertNewPass,
+.allertOlllldPasss,
+.allertSeelect {
+    margin-top: 5px;
+    margin-bottom: 25px;
+    color: red;
+}
+
+.pop button {
+    margin-top: 20px;
+}
+
 // End main content
 //start Footer 
 footer {

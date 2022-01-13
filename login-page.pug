@@ -6,7 +6,7 @@ block mainLog
     .allert(style="background-color:#f8d7da")
     form(action="#") 
         input(type="email" placeholder="Email Address" name="EmailAdress" required)
-        div(class="alert-Box email") Please enter your email address
+        div(class="alert-Box email")
         input(type="password" placeholder="Password" Name="Password" required)
         div(class="alert-Box password") Please enter your Password
         .con-for
@@ -16,6 +16,9 @@ block mainLog
             .for
                 a(class="forget" href="./forget.html") Forgot your password?
         input(type="submit" value="Login" id="submit") 
+        div.anotherpage
+            input(type="submit" value="Register" id="force")
+            input(type="submit" value="verifiction" id="force2")
 block member 
 //- to modifiy script
 block script    

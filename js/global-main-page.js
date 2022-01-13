@@ -136,15 +136,15 @@
         pop.classList.remove("enablePop")
     })
     buttonCancel[1].addEventListener("click", function(e) {
-        e.preventDefault()
-        blurE.classList.remove("enablePop")
-        pop.classList.remove("enablePop")
-    })
-    buttonCancel[2].addEventListener("click", function(e) {
-        e.preventDefault()
-        blurE.classList.remove("enablePop")
-        pop.classList.remove("enablePop")
-    })
+            e.preventDefault()
+            blurE.classList.remove("enablePop")
+            pop.classList.remove("enablePop")
+        })
+        // buttonCancel[2].addEventListener("click", function(e) {
+        //     e.preventDefault()
+        //     blurE.classList.remove("enablePop")
+        //     pop.classList.remove("enablePop")
+        // })
 
     // to display setting 
     const displaySetting = document.querySelector(".Icon")
@@ -163,94 +163,164 @@
     const changePassBtn = document.querySelector(".change")
     const recentPassch = document.querySelector(".recentChange")
     const newPass = document.querySelector(".newPass")
-    changePassBtn.addEventListener("click", function(e) {
-        e.preventDefault()
-        data = {
-            oldPassword: recentPassch.value,
-            newPassword: newPass.value
-        }
-        if (data.oldPassword != "" && data.newPassword != "") {
-            fetch("https://localhost:44349/api/Account/ChangePassword", {
-                    method: "POST",
 
-                    headers: {
-                        "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
-                        "Content-type": "application/json; charset=UTF-8"
-                    },
-                    body: JSON.stringify(data)
-
-                })
-                .then(response => response.json())
-                .then(function(json) {
-                    console.log(json)
-                    if (json.hasError == false) {
-                        changePassBtn.value = "Password changed"
-                        setTimeout(() => {
-                            changePassBtn.value = "Submit"
-                        }, 5000);
-                    } else {
-                        if (json.errorsDictionary.FormValidationError_Password === "Invalid Credintials!") {
-                            recentPassch.value = ""
-                            recentPassch.setAttribute("placeholder", json.errorsDictionary.FormValidationError_Password)
-                        } else {
-                            newPass.value = ""
-                            newPass.setAttribute("placeholder", json.errorsDictionary.FormValidationError_Password)
-                        }
-                    }
-                })
-                .catch(err => console.log(err))
-        }
-    })
 
     const freeze = document.querySelector(".freezeBtn")
     const passFreeze = document.querySelector(".passNow")
     const freezeConvertValue = document.querySelector("select").value
     let numberOfDay
-    freeze.addEventListener("click", function(e) {
-        if (freezeConvertValue === "24 Hour") {
-            numberOfDay = 1
-        } else if (freezeConvertValue === "1 Week") {
-            numberOfDay = 7
-        } else if (freezeConvertValue === "1 Month") {
-            numberOfDay = 30
-        } else if (freezeConvertValue === "3 Month") {
-            numberOfDay = 90
-        } else if (freezeConvertValue === "6 Month") {
-            numberOfDay = 180
-        } else if (freezeConvertValue === "1 Year") {
-            numberOfDay = 365
-        }
-        data = {}
-        data.password = document.querySelector(".passNow").value
-        console.log(passFreeze.value)
-        data.daysCount = numberOfDay
-        e.preventDefault()
-        if (passFreeze != "") {
-            fetch("https://localhost:44349/api/Account/FreezeAccount", {
-                    method: "POST",
-                    headers: {
-                        "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
-                        "Content-type": "application/json; charset=UTF-8"
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(function(json) {
-                    console.log(json)
-                    if (json.hasError == false) {
 
-                    } else {
-                        passFreeze.value = ""
-                        passFreeze.setAttribute("placeholder", json.errorsDictionary.FormValidationError_Password)
-                    }
-                })
-                .catch(err => console.log(err))
-        }
-    })
 
     const signout = document.querySelector(".signout")
     signout.addEventListener("click", function() {
         window.sessionStorage.removeItem("Access token")
         window.location = "../login-page.html"
     })
+
+
+    let boolRec = false
+    let boolPass = false
+    let booFr = false
+
+
+    function passwordCheck(input, allert) {
+        input.addEventListener("input", function() {
+            if (input.value == "") {
+                allert.innerHTML = "Password is empty"
+                allert.style.color = "red"
+                return false
+            } else {
+                if (input.value.match(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/)) {
+                    allert.innerHTML = "Great!"
+                    allert.style.color = "#2ad4bc"
+                    if (input === recentChange) {
+                        boolRec = true
+                    } else if (input === newPass) {
+                        boolPass = true
+                    } else if (input === rrr) {
+                        booFr = true
+                    }
+
+                } else {
+                    allert.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character."
+                    allert.style.color = "red"
+
+                }
+            }
+        })
+    }
+
+    const recentChange = document.querySelector(".recentChange")
+    const allertOldPass = document.querySelector(".allertOldPass")
+    passwordCheck(recentChange, allertOldPass)
+    console.log(boolPass)
+
+    const allertNewPass = document.querySelector(".allertNewPass")
+    passwordCheck(newPass, allertNewPass)
+
+    const rrr = document.querySelector("input[placeholder=\"Enter Account Passowrd\"]")
+    const allertOlllldPasss = document.querySelector(".allertOlllldPasss")
+    passwordCheck(rrr, allertOlllldPasss)
+
+
+
+
+    freeze.addEventListener("click", function(e) {
+        console.log(booFr)
+        if (booFr === true) {
+            booFr = false
+            if (freezeConvertValue === "24 Hour") {
+                numberOfDay = 1
+            } else if (freezeConvertValue === "1 Week") {
+                numberOfDay = 7
+            } else if (freezeConvertValue === "1 Month") {
+                numberOfDay = 30
+            } else if (freezeConvertValue === "3 Month") {
+                numberOfDay = 90
+            } else if (freezeConvertValue === "6 Month") {
+                numberOfDay = 180
+            } else if (freezeConvertValue === "1 Year") {
+                numberOfDay = 365
+            }
+            data = {}
+            data.password = document.querySelector(".passNow").value
+            console.log(passFreeze.value)
+            data.daysCount = numberOfDay
+            e.preventDefault()
+            if (passFreeze != "") {
+                fetch("https://localhost:44349/api/Account/FreezeAccount", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
+                            "Content-type": "application/json; charset=UTF-8"
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => response.json())
+                    .then(function(json) {
+                        console.log(json)
+                        if (json.hasError == false) {
+
+                        } else {
+                            passFreeze.value = ""
+                            passFreeze.setAttribute("placeholder", json.errorsDictionary.FormValidationError_Password)
+                        }
+                    })
+                    .catch(err => console.log(err))
+            }
+        }
+    })
+
+
+    changePassBtn.addEventListener("click", function(e) {
+        e.preventDefault()
+        console.log(boolRec, boolPass)
+        if (boolRec === true && boolPass === true) {
+            boolPass = false
+            boolRec = false
+            console.log("Hllllllo")
+
+            data = {
+                oldPassword: recentPassch.value,
+                newPassword: newPass.value
+            }
+            if (data.oldPassword != "" && data.newPassword != "") {
+                fetch("https://localhost:44349/api/Account/ChangePassword", {
+                        method: "POST",
+
+                        headers: {
+                            "Authorization": `Bearer ${JSON.parse( window.sessionStorage.getItem("Access token"))}`,
+                            "Content-type": "application/json; charset=UTF-8"
+                        },
+                        body: JSON.stringify(data)
+
+                    })
+                    .then(response => response.json())
+                    .then(function(json) {
+                        console.log(json)
+                        if (json.hasError == false) {
+                            changePassBtn.value = "Password changed"
+
+                            setTimeout(() => {
+                                changePassBtn.value = "Submit"
+
+                            }, 5000);
+                        } else {
+                            if (json.errorsDictionary.FormValidationError_Password === "Invalid Credintials!") {
+                                allertOldPass.innerHTML = json.errorsDictionary.FormValidationError_Password
+                                allertOldPass.style.color = "red"
+                            } else {
+                                newPass.value = ""
+                                newPass.setAttribute("placeholder", json.errorsDictionary.FormValidationError_Password)
+                            }
+                        }
+                    })
+                    .catch(err => console.log(err))
+            }
+        }
+    })
+
+
+
+
 }

@@ -206,3 +206,19 @@
 .container .center .form-inner a.loginHere {
     color: $darkGreen;
 }
+
+.anotherpage {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    .container .center .form-inner form input[value="Register"] {
+        margin: 0;
+    }
+}
+
+.container .center .form-inner form input[type="submit"]#force,
+.container .center .form-inner form input[type="submit"]#force2 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 45%;
+}
