@@ -121,7 +121,7 @@ disLike.addEventListener("click", function() {
         .catch(err => console.log(err))
 })
 
-function start() {
+async function start() {
 
 
 

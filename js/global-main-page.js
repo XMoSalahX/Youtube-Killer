@@ -241,6 +241,8 @@
                 numberOfDay = 180
             } else if (freezeConvertValue === "1 Year") {
                 numberOfDay = 365
+            } else {
+                numberOfDay = true
             }
             data = {}
             data.password = document.querySelector(".passNow").value
