@@ -233,11 +233,3 @@
     })
 
 }
-
-
-// To Back end developer 
-/*/
-    * The data you will be sending : 
-    - dataL.email            // User Email              
-    - dataL.password         // User Password
-*/

@@ -1,5 +1,12 @@
 {
 
+    if (window.sessionStorage.getItem("Access token")) {
+        console.log("The user is authorized to access the content page");
+
+    } else {
+        window.location = "../login-page.html"
+    }
+
 
     window.addEventListener("click", function(e) {
         h2S = document.querySelectorAll("h2")
@@ -32,6 +39,8 @@
     const thirdContent = document.querySelectorAll(".header-content")[2]
     const SecondContenet = document.querySelectorAll(".header-content")[1]
     const FullName = document.querySelector(".UserName")
+    const forthContent = document.querySelectorAll(".header-content")[3]
+    const fifthContent = document.querySelectorAll(".header-content")[4]
 
     FullName.innerHTML = "Hi, " + JSON.parse(window.sessionStorage.getItem("Username"))
 
@@ -52,6 +61,18 @@
         } else if (window.sessionStorage.getItem("target") == "thirdContent") {
             console.log(window.sessionStorage.getItem("target"))
             thirdContent.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            })
+        } else if (window.sessionStorage.getItem("target") == "forthContent") {
+            console.log(window.sessionStorage.getItem("target"))
+            forthContent.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            })
+        } else if (window.sessionStorage.getItem("target") == "fithContent") {
+            console.log(window.sessionStorage.getItem("target"))
+            fifthContent.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             })
@@ -106,9 +127,17 @@
     Scrool(SecondContenet, SecondLi)
 
     // Scroll Into Third Topic
-    const ThirdLi = document.querySelector("li:last-child")
+    const ThirdLi = document.querySelector("li:nth-child(3)")
 
     Scrool(thirdContent, ThirdLi)
+
+    const forthLi = document.querySelector("li:nth-child(4)")
+
+    Scrool(forthContent, forthLi)
+
+    const fifthLi = document.querySelector("li:nth-child(5)")
+
+    Scrool(fifthContent, fifthLi)
 
 
     // to open website Setting
@@ -167,7 +196,7 @@
 
     const freeze = document.querySelector(".freezeBtn")
     const passFreeze = document.querySelector(".passNow")
-    const freezeConvertValue = document.querySelector("select").value
+    var freezeConvertValue = document.querySelector("select").value
     let numberOfDay
 
 
@@ -197,7 +226,8 @@
                         boolRec = true
                     } else if (input === newPass) {
                         boolPass = true
-                    } else if (input === rrr) {
+                    }
+                    if (input === rrr) {
                         booFr = true
                     }
 
@@ -224,31 +254,38 @@
 
 
 
-
+    let forever;
+    console.log(numberOfDay, forever)
     freeze.addEventListener("click", function(e) {
+        e.preventDefault()
         console.log(booFr)
+        freezeConvertValue = document.querySelector("select").value
         if (booFr === true) {
             booFr = false
-            if (freezeConvertValue === "24 Hour") {
+            if (freezeConvertValue == "24 Hour") {
                 numberOfDay = 1
-            } else if (freezeConvertValue === "1 Week") {
+            } else if (freezeConvertValue == "1 Week") {
                 numberOfDay = 7
-            } else if (freezeConvertValue === "1 Month") {
+            } else if (freezeConvertValue == "1 Month") {
                 numberOfDay = 30
-            } else if (freezeConvertValue === "3 Month") {
+            } else if (freezeConvertValue == "3 Month") {
                 numberOfDay = 90
-            } else if (freezeConvertValue === "6 Month") {
+            } else if (freezeConvertValue == "6 Month") {
                 numberOfDay = 180
-            } else if (freezeConvertValue === "1 Year") {
+            } else if (freezeConvertValue == "1 Year") {
                 numberOfDay = 365
-            } else {
-                numberOfDay = true
+            } else if (freezeConvertValue == "Forever") {
+                forever = true
             }
             data = {}
             data.password = document.querySelector(".passNow").value
             console.log(passFreeze.value)
-            data.daysCount = numberOfDay
-            e.preventDefault()
+            if (forever === true) {
+                data.forever = forever
+            } else {
+                data.daysCount = numberOfDay
+            }
+            console.log(numberOfDay, forever)
             if (passFreeze != "") {
                 fetch("https://localhost:44349/api/Account/FreezeAccount", {
                         method: "POST",
@@ -262,7 +299,8 @@
                     .then(function(json) {
                         console.log(json)
                         if (json.hasError == false) {
-
+                            window.sessionStorage.removeItem("Access token")
+                            window.location = "../login-page.html"
                         } else {
                             passFreeze.value = ""
                             passFreeze.setAttribute("placeholder", json.errorsDictionary.FormValidationError_Password)
