@@ -1,13 +1,16 @@
 // Import Color
 @import "color";
 // global
-* {
-    box-sizing: border-box;
-    font-family: sans-serif;
-}
+
+/*!start style*/
 
 .ti-sl {
     height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 .container {

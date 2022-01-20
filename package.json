@@ -1,0 +1,28 @@
+{
+    "name": "kadifi",
+    "version": "1.0.0",
+    "description": "You can enjoy the videos and music you love, upload original content, and share it all with your friends, family and the world on Kadifi Web.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/XMoSalahX/Youtube-Killer.git"
+    },
+    "author": "Mohammed Salah",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/XMoSalahX/Youtube-Killer/issues"
+    },
+    "homepage": "https://github.com/XMoSalahX/Youtube-Killer#readme",
+    "dependencies": {},
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "gulp-concat": "^2.6.1",
+        "gulp-pug": "^5.0.0",
+        "gulp-sass": "^5.1.0",
+        "node-sass": "^7.0.1",
+        "sass": "^1.49.0"
+    }
+}
