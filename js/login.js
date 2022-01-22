@@ -123,7 +123,7 @@
                             countRedirect--
                         }, 1000);
                         setTimeout(() => {
-                            window.location = "../home-page.html"
+                            window.location = "home-page.html"
                         }, 6000);
                     } else {
                         allert.innerHTML = "<b>Error, </b>" + "Please review the input fields."
@@ -223,13 +223,13 @@
 
     const force = document.querySelector("#force")
     force.addEventListener("click", function() {
-        window.location = "../register-page.html"
+        window.location = "register-page.html"
     })
 
     const force2 = document.querySelector("#force2")
     force2.addEventListener("click", function() {
         window.sessionStorage.setItem("Go To Ver", "Go")
-        window.location = "../register-page.html"
+        window.location = "register-page.html"
     })
 
 }

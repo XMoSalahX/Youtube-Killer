@@ -15,10 +15,7 @@ html(lang="en")
         // This is Website Icon
         link(rel="icon" href="images/icons8-k-96.png" type="image/png" sizes="96x96")
         title Kadifi Web
-        // Normalize library 
-        link(rel="stylesheet", href="css/normalize.css")
-        // font awesome for icon
-        link(rel="stylesheet", href="css/all.min.css")
+        //- base(href="localhost/Youtube-Killer/")
         // google API
         <meta name="google-signin-scope" content="profile email">
         <meta name="google-signin-client_id" content="536992085046-725lusp25dpddn4fk9mv3egmfc5pc1m2.apps.googleusercontent.com">
@@ -26,8 +23,7 @@ html(lang="en")
         block Main-Stylesheet   
             //main stylesheet
             link(rel="stylesheet", href="css/main-log.css")
-            //media stylesheet for mobile
-            link(rel="stylesheet", href="css/media-log.css")
+            
     // End Head 
     // Start Body 
     body 
@@ -58,9 +54,10 @@ html(lang="en")
 
         // google api script
         script(src="https://apis.google.com/js/platform.js" async defer)
+        script(src="http://localhost:35729/livereload.js?")
         // Facebook API script
         //- script(async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=872961233386346&autoLogAppEvents=1" nonce="O9d1fnJa")
-        script(src="js/fbAPI.js")
+        
         //- To modify Script file
         block script    
     // End Body 

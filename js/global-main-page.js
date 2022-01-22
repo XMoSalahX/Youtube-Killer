@@ -1,10 +1,10 @@
-{
+window.onload = function() {
 
     if (window.sessionStorage.getItem("Access token")) {
         console.log("The user is authorized to access the content page");
 
     } else {
-        window.location = "../login-page.html"
+        window.location = "login-page.html"
     }
 
 
@@ -25,7 +25,7 @@
                         console.log(json)
                         if (json.hasError === false) {
                             window.sessionStorage.setItem("Get Post", JSON.stringify(json.data))
-                            window.location = "../active-vedieo.html"
+                            window.location = "active-vedieo.html"
                         }
                     })
                     .catch(err => console.log(err))
@@ -203,7 +203,7 @@
     const signout = document.querySelector(".signout")
     signout.addEventListener("click", function() {
         window.sessionStorage.removeItem("Access token")
-        window.location = "../login-page.html"
+        window.location = "login-page.html"
     })
 
 
@@ -300,7 +300,7 @@
                         console.log(json)
                         if (json.hasError == false) {
                             window.sessionStorage.removeItem("Access token")
-                            window.location = "../login-page.html"
+                            window.location = "login-page.html"
                         } else {
                             passFreeze.value = ""
                             passFreeze.setAttribute("placeholder", json.errorsDictionary.FormValidationError_Password)
@@ -359,8 +359,5 @@
             }
         }
     })
-
-
-
-
-}
+};
+/**dfsdfsd */
